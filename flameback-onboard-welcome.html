@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>flameback. — Welcome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#1A1714; --ink:#F2EDE3; --ink-soft:rgba(242,237,227,.64); --ink-mute:rgba(242,237,227,.42);
+    --line:rgba(242,237,227,.15); --accent:#FF6D0A; --btn-bg:#FF6D0A; --btn-ink:#1A1714;
+    --grain-blend:screen; --grain-op:.05;
+  }
+  :root.light{
+    --bg:#FCFAF6; --ink:#1A1714; --ink-soft:rgba(26,23,20,.66); --ink-mute:rgba(26,23,20,.46);
+    --line:rgba(26,23,20,.13); --accent:#FF6D0A; --btn-bg:#1A1714; --btn-ink:#FCFAF6;
+    --grain-blend:multiply; --grain-op:.03;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Serif 4",serif;transition:background .5s,color .5s;font-variant-numeric:tabular-nums;min-height:100vh;display:flex;flex-direction:column}
+  body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;mix-blend-mode:var(--grain-blend);opacity:var(--grain-op);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  section,nav,main{position:relative;z-index:2}
+  .wrap{max-width:920px;margin:0 auto;padding:0 clamp(22px,5vw,44px);width:100%}
+  .wm{font-family:"Source Serif 4",serif;font-weight:600;font-size:18px;color:var(--ink);text-decoration:none}
+  .wm .p{color:var(--accent)}
+  h1,h2,h3,h4{font-family:"Cormorant Garamond",serif;font-weight:500;letter-spacing:-.012em;color:var(--ink)}
+
+  nav{padding:18px 0;border-bottom:1px solid var(--line);flex-shrink:0}
+  .navin{display:flex;align-items:center;justify-content:space-between;max-width:1080px;margin:0 auto;padding:0 clamp(22px,5vw,44px)}
+  .navr{display:flex;align-items:center;gap:22px}
+  .navr a, .navr .nlink{color:var(--ink-soft);text-decoration:none;font-size:13.5px;font-style:italic;cursor:pointer}
+  .navr a:hover, .navr .nlink:hover{color:var(--ink)}
+  .toggle{background:none;border:1px solid var(--line);color:var(--ink-soft);cursor:pointer;font-family:"Source Serif 4",serif;font-size:13px;font-style:italic;padding:5px 13px;border-radius:999px}
+
+  main{padding:clamp(48px,8vh,96px) 0 clamp(36px,5vh,56px);flex:1;display:flex;align-items:center}
+
+  .greet{font-style:italic;font-size:13px;color:var(--ink-mute);letter-spacing:.05em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:12px}
+  .greet .l{width:24px;height:1px;background:var(--accent)}
+
+  h1{font-size:clamp(38px,6vw,68px);line-height:1;letter-spacing:-.02em;margin-bottom:18px;max-width:20ch}
+  h1 .acc{color:var(--accent);font-style:italic}
+  .lede{font-size:16.5px;line-height:1.6;color:var(--ink-soft);margin-bottom:clamp(32px,5vw,52px);max-width:56ch}
+  .lede em{color:var(--ink);font-style:italic;font-weight:500}
+
+  /* Two posture cards */
+  .ask{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(22px,3vw,28px);color:var(--ink);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+  .ask .num{color:var(--accent);font-size:18px}
+
+  .post-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px}
+  @media(max-width:680px){.post-grid{grid-template-columns:1fr}}
+
+  .post{padding:clamp(22px,3vw,30px);border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 2%,transparent);text-decoration:none;color:var(--ink);transition:border-color .2s,background .2s;cursor:pointer;display:flex;flex-direction:column;gap:14px;position:relative}
+  .post:hover{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 4%,transparent)}
+  .post .pn{position:absolute;top:14px;right:16px;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:14px;color:var(--ink-mute)}
+  .post:hover .pn{color:var(--accent)}
+
+  .post-icon{width:42px;height:42px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:"Cormorant Garamond",serif;font-style:italic;font-size:18px;background:var(--bg)}
+  .post:hover .post-icon{border-color:var(--accent)}
+
+  .post h3{font-size:22px;line-height:1.15;margin-bottom:4px}
+  .post .d{font-size:14px;line-height:1.55;color:var(--ink-soft)}
+  .post .meta{font-size:11.5px;font-style:italic;color:var(--ink-mute);letter-spacing:.04em;margin-top:10px;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .post .meta .arrow{color:var(--accent);font-size:14px}
+
+  /* Note */
+  .note{padding:16px 20px;background:color-mix(in srgb,var(--ink) 2%,transparent);border-left:2px solid var(--accent);font-size:13.5px;color:var(--ink-soft);font-style:italic;line-height:1.6;max-width:64ch}
+  .note em{color:var(--ink);font-style:italic;font-weight:500}
+
+  /* Footer */
+  .fbar{flex-shrink:0;border-top:1px solid var(--line);padding:18px 0}
+  .fbar .wrap{max-width:1080px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  .fbar .copy{font-size:12px;color:var(--ink-mute);font-style:italic}
+  .fbar .links{display:flex;gap:18px}
+  .fbar .links a{color:var(--ink-mute);text-decoration:none;font-size:12px;font-style:italic}
+  .fbar .links a:hover{color:var(--ink-soft)}
+</style>
+</head>
+<body>
+
+  <nav>
+    <div class="navin">
+      <a class="wm" href="index.html"><svg class="wm-ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="121.5 244.6 110.0 167.2" fill="none" style="height:1.05em;width:auto;vertical-align:-.16em;margin-right:7px"><path transform="matrix(.33995817,0,0,.33995817,76.5,225.75)" d="M220.2 523.6C220.2 425.09999 220.2 329.59999 220.2 233.99997 233 234.79998 234.4 236.29998 234.4 248.19997 234.4 324.19996 234.4 400.09999 234.29999 476.09999 234.29999 481.99998 233.99999 487.89997 233.79999 493.8 233.4 505.9 234.29999 507 245.9 505.19999 298 496.8 335.4 468.8 355.5 419.89997 379.9 360.39997 358.1 293.09999 304.3 257.49998 283.4 243.69997 261.5 231.39997 241.59999 216.39997 212.09999 194.09996 196.29999 163.09996 190.59999 126.59996 189.99999 122.59996 187.79999 119.09996 184.7 116.59996 172.4 107.09996 163 95.59996 155.8 80.29996 159.5 80.09996 224 78.999958 253.4 79.899959 286.3 80.79996 312.8 94.499958 332 121.899959 334.7 125.79996 339.6 129.09996 344.1 130.69995 361.30003 136.79996 378.80003 141.89995 396 147.89995 411.5 153.29994 423.4 163.29994 432.5 179.09995 423.2 176.29994 415.5 173.29994 407.5 171.59995 383.8 166.39995 360 167.09995 336.6 172.89995 321.1 176.79994 310.80003 187.69995 305.9 203.19995 304.9 206.19995 304.19999 209.29996 303.4 212.39995 289.5 207.39995 288.4 205.59995 293.9 192.89995 304.3 168.59995 324.1 157.89995 349.4 155.69995 352.69999 155.39995 358.9 154.69995 366 154.19995 341.9 144.49996 310.1 137.59995 284.6 135.29996 259.2 132.99996 233.70001 131.49996 207 129.49996 207.4 132.49996 207.4 135.59996 208.1 138.39995 217.1 172.49994 237.3 198.19995 267.2 216.59995 283 226.29994 299.1 235.59995 314.2 246.39995 367.2 284.49995 389.2 336.69996 376.5 400.49995 364.4 461.29994 325.7 499.99995 265.7 516.19998 251.4 519.8 236.4 520.9 220.2 523.6Z" fill="currentColor"/><path transform="matrix(.33995817,0,0,.33995817,76.5,225.75)" d="M183.4 93.4C183 94.200008 200.7 110.5 205.79999 111.8 216.79999 114.600009 305 122.600009 311.09999 123.4 310.89997 121.3 291.3 96.9 251.89998 95.3 231.2 94.8 195.8 93.4 183.4 93.4Z" fill="#FF6D0A"/></svg>flameback</a>
+      <div class="navr">
+        <button class="toggle" id="toggle">Light</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap">
+
+      <div class="greet"><span class="l"></span><span>Onboarding &middot; Chapter 0</span></div>
+      <h1>Let&rsquo;s get you <span class="acc">onboarded.</span></h1>
+      <p class="lede">This will take somewhere between fifteen minutes and a few sittings, depending on how much you&rsquo;d like to talk through. It works the same way whether you do it alone, with your relationship manager on a screen-share, or together in a meeting. <em>Either of you can take over at any point.</em></p>
+
+      <div class="ask"><span class="num">?</span><span>Who&rsquo;s at the keyboard right now?</span></div>
+
+      <div class="post-grid">
+
+        <a class="post" href="flameback-onboard-identity.html">
+          <span class="pn">i</span>
+          <div class="post-icon">&#8230;</div>
+          <h3>I&rsquo;m the new client.</h3>
+          <div class="d">A guided walkthrough &mdash; one question at a time, with explanations where helpful. You can pause anywhere and pick up later. If you get stuck, ping your RM from the corner of any screen.</div>
+          <div class="meta"><span>Begin Chapter 1 &middot; About 12&ndash;18 minutes</span><span class="arrow">&rarr;</span></div>
+        </a>
+
+        <a class="post" href="flameback-onboard-identity.html">
+          <span class="pn">ii</span>
+          <div class="post-icon">&middot;&middot;</div>
+          <h3>I&rsquo;m the RM.</h3>
+          <div class="d">Same flow, with an RM panel on the side &mdash; private notes, jump-around between chapters, send-link button to hand off mid-flow, take-over toggle when the client wants you to type for a bit.</div>
+          <div class="meta"><span>RM mode &middot; Notes &amp; controls visible</span><span class="arrow">&rarr;</span></div>
+        </a>
+
+      </div>
+
+      <div class="note">
+        <em>This is a working draft.</em> Nothing is binding until you reach Chapter 8 and sign. Until then, every screen saves automatically and you can change anything &mdash; including who&rsquo;s typing.
+      </div>
+
+    </div>
+  </main>
+
+  <div class="fbar">
+    <div class="wrap">
+      <span class="copy">&copy; 2026 Flameback Capital Pvt Ltd</span>
+      <div class="links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Help</a>
+      </div>
+    </div>
+  </div>
+
+<script>
+  var root=document.documentElement, tg=document.getElementById('toggle');
+  tg.addEventListener('click',function(){root.classList.toggle('light');tg.textContent=root.classList.contains('light')?'Dark':'Light';});
+</script>
+  <script src="site-footer.js"></script>
+  <script src="reload.js"></script>
+</body>
+</html>

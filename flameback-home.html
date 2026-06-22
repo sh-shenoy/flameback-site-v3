@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>flameback. — Quantitative wealth management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ─── Tokens (from home v3 — two oranges by theme) ─── */
+  :root{
+    --bg:#1A1714; --ink:#F2EDE3;
+    --ink-soft:rgba(242,237,227,.66); --ink-mute:rgba(242,237,227,.44);
+    --line:rgba(242,237,227,.16); --panel:#221E1A;
+    --accent:#FF6D0A; --btn-bg:#FF6D0A; --btn-ink:#1A1714;
+    --grain-blend:screen; --grain-op:.055;
+  }
+  :root.light{
+    --bg:#FCFAF6; --ink:#1A1714;
+    --ink-soft:rgba(26,23,20,.68); --ink-mute:rgba(26,23,20,.46);
+    --line:rgba(26,23,20,.14); --panel:#F4EFE7;
+    --accent:#B23E08; --btn-bg:#1A1714; --btn-ink:#FCFAF6;
+    --grain-blend:multiply; --grain-op:.035;
+  }
+
+  /* ─── Base ─── */
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Serif 4",serif;transition:background .5s,color .5s;font-variant-numeric:tabular-nums;line-height:1.55}
+  body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;mix-blend-mode:var(--grain-blend);opacity:var(--grain-op);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(22px,5vw,44px)}
+  section{position:relative;z-index:2}
+
+  /* ─── Type ─── */
+  .wm{font-family:"Source Serif 4",serif;font-weight:600;font-size:18px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+  .wm .p{color:var(--accent)}
+  h1,h2,h3,h4{font-family:"Cormorant Garamond",serif;font-weight:500;letter-spacing:-.014em;color:var(--ink);line-height:1.04}
+  h1 em,h2 em,h3 em,h4 em{color:var(--accent);font-style:italic;font-weight:500}
+  .lab{font-family:"Source Serif 4",serif;font-style:italic;font-size:13px;color:var(--ink-mute);letter-spacing:.03em;display:inline-flex;align-items:center;gap:11px}
+  .lab .l{width:24px;height:1px;background:var(--accent)}
+  .lab .n{font-style:normal;color:var(--accent);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-right:0}
+
+  /* ─── Buttons ─── */
+  .btn,.btn-out{display:inline-flex;align-items:center;gap:11px;font-family:"Source Serif 4",serif;font-size:15px;font-weight:500;padding:13px 24px;text-decoration:none;transition:gap .35s,opacity .3s,border-color .3s;cursor:pointer;border:none}
+  .btn{background:var(--btn-bg);color:var(--btn-ink)} .btn:hover{gap:15px;opacity:.92}
+  .btn-out{background:transparent;color:var(--ink);border:1px solid var(--line)} .btn-out:hover{gap:15px;border-color:var(--ink-mute)}
+  .btn .ar{transition:transform .35s cubic-bezier(.16,1,.3,1)}
+  .btn:hover .ar{transform:translateX(3px)}
+
+  /* ─── Nav ─── */
+  nav.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .4s}
+  nav.top.scrolled{border-color:var(--line)}
+  .navin{display:flex;align-items:center;justify-content:space-between;padding:15px 0;gap:22px}
+  .navr{display:flex;align-items:center;gap:21px}
+  .navr a{color:var(--ink-soft);text-decoration:none;font-size:14.5px;transition:color .3s}
+  .navr a:hover{color:var(--ink)}
+  .navr a.cta{background:var(--btn-bg);color:var(--btn-ink);padding:8px 17px;font-weight:500}
+  .toggle{background:none;border:1px solid var(--line);color:var(--ink-soft);cursor:pointer;font-family:"Source Serif 4",serif;font-size:13px;font-style:italic;padding:5px 13px;border-radius:999px;transition:border-color .3s,color .3s}
+  .toggle:hover{border-color:var(--ink-mute);color:var(--ink)}
+  @media(max-width:1020px){.navr .navlink{display:none}}
+
+  /* ─── Hero: two columns ─── */
+  .hero{padding:clamp(38px,7vh,76px) 0 clamp(36px,6vh,60px);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:1fr;gap:clamp(34px,5vw,68px);align-items:center}
+  @media(max-width:880px){.hero .wrap{grid-template-columns:1fr;gap:42px}}
+  .hero-meta{display:flex;justify-content:space-between;align-items:center;font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--ink-mute);letter-spacing:.07em;text-transform:uppercase;margin-bottom:34px;flex-wrap:wrap;gap:14px}
+  .hero-meta .left{display:flex;align-items:center;gap:11px}
+  .hero-meta .left .d{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  h1.hero-h{font-size:clamp(38px,5.6vw,72px);line-height:.98;letter-spacing:-.02em;margin-bottom:24px;max-width:16ch;opacity:0;animation:up 1.1s cubic-bezier(.16,1,.3,1) .26s forwards}
+  .hero-sub{font-size:clamp(16px,1.6vw,18.5px);line-height:1.55;color:var(--ink-soft);max-width:46ch;margin-bottom:30px;font-style:italic;opacity:0;animation:up 1s ease .42s forwards}
+  .hero-sub em{color:var(--ink);font-style:italic;font-weight:500}
+  .hero-ct{display:flex;align-items:center;gap:14px;flex-wrap:wrap;opacity:0;animation:up 1s ease .56s forwards}
+  .hero-wmark{position:absolute;right:-30px;bottom:-30px;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(160px,24vw,300px);color:var(--ink);opacity:.022;line-height:.8;pointer-events:none;letter-spacing:-.04em;white-space:nowrap;z-index:1}
+
+  /* ─── App card (from v30) ─── */
+  .appcard{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:24px 22px 22px;opacity:0;animation:up 1.1s cubic-bezier(.16,1,.3,1) .5s forwards;max-width:420px;width:100%;margin:0 auto}
+  .ac-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px}
+  .ac-top .wm{font-size:15px}
+  .ac-meta{font-style:italic;font-size:12.5px;color:var(--ink-mute)}
+  .pf-vlab{font-style:italic;font-size:12.5px;color:var(--ink-mute);margin-bottom:4px}
+  .pf-val{font-family:"Cormorant Garamond",serif;font-size:32px;font-weight:500;line-height:1;margin-bottom:3px}
+  .pf-since{font-style:italic;font-size:12.5px;color:var(--ink-mute);margin-bottom:14px}
+  .pf-chart{margin-bottom:16px}
+  .pf-chart svg{width:100%;height:auto;display:block;overflow:visible;color:var(--ink)}
+  .pf-alloc{border-top:1px solid var(--line)}
+  .pf-arow{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--line)}
+  .pf-arow:last-child{border-bottom:none}
+  .pf-arow .nm{font-size:14.5px}
+  .pf-arow .pct{font-size:14.5px;color:var(--ink-soft);font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:.02em}
+  .pf-foot{margin-top:14px;font-style:italic;font-size:12.5px;color:var(--ink-mute);text-align:center}
+
+  /* ─── Numbers row (from home) ─── */
+  .nums{border-bottom:1px solid var(--line)}
+  .nums-row{display:grid;grid-template-columns:repeat(4,1fr);align-items:stretch}
+  @media(max-width:760px){.nums-row{grid-template-columns:repeat(2,1fr)}}
+  .nums-cell{padding:24px clamp(20px,3vw,32px);border-left:1px solid var(--line)}
+  .nums-cell:first-child{border-left:none}
+  @media(max-width:760px){.nums-cell{border-left:none;border-top:1px solid var(--line)}.nums-cell:nth-child(1),.nums-cell:nth-child(2){border-top:none}.nums-cell:nth-child(odd){border-left:none}.nums-cell:nth-child(even){border-left:1px solid var(--line)}}
+  .nums-cell .l{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--ink-mute);letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:10px}
+  .nums-cell .v{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(28px,3.4vw,36px);color:var(--ink);line-height:1.02;letter-spacing:-.012em}
+  .nums-cell .v em{color:var(--accent);font-style:italic}
+  .nums-cell .d{font-family:"Source Serif 4",serif;font-style:italic;font-size:11.5px;color:var(--ink-mute);margin-top:7px;line-height:1.5}
+
+  /* ─── Sections (head left, body right — from v30) ─── */
+  .sec{padding:clamp(50px,7vw,84px) 0;border-top:1px solid var(--line)}
+  .sec .wrap{display:grid;grid-template-columns:minmax(250px,.82fr) 1.7fr;gap:clamp(32px,4.5vw,64px);align-items:start}
+  @media(max-width:860px){.sec .wrap{grid-template-columns:1fr;gap:26px}}
+  .sec.full .wrap{display:block}
+  .head{max-width:34ch}
+  .sec.full .head{max-width:60ch;margin-bottom:clamp(28px,3.5vw,40px)}
+  .head .lab{display:inline-flex;margin-bottom:15px}
+  .head h2{font-size:clamp(32px,4.4vw,52px);line-height:1.04;margin-bottom:16px}
+  .head .intro{font-size:16px;line-height:1.62;color:var(--ink-soft);font-style:italic;max-width:44ch}
+  .head .intro em{color:var(--ink);font-style:italic;font-weight:500}
+
+  /* ─── Column grids ─── */
+  .cols{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .cols.c3{grid-template-columns:repeat(3,1fr)}
+  .cols.c2{grid-template-columns:repeat(2,1fr)}
+  .cols.c4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:760px){.cols.c3,.cols.c4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.cols.c2,.cols.c3,.cols.c4{grid-template-columns:1fr}}
+  .col{background:var(--bg);padding:clamp(20px,2.4vw,30px)}
+  .col .cn{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:20px;color:var(--accent);margin-bottom:10px;display:block;line-height:1}
+  .col h3{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(20px,2.3vw,24px);line-height:1.16;margin-bottom:10px}
+  .col h3 em{color:var(--accent);font-style:italic}
+  .col p{font-size:14.5px;line-height:1.6;color:var(--ink-soft)}
+  .col p em{color:var(--ink);font-style:italic;font-weight:500}
+
+  /* ─── Three statements (manifesto, from home) ─── */
+  .manif-cell{padding:32px 30px}
+  .manif-cell .n{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--accent);font-size:22px;margin-bottom:14px;display:block;line-height:1}
+  .manif-cell h3{font-size:23px;line-height:1.18;margin-bottom:12px}
+  .manif-cell .d{font-size:14.5px;line-height:1.65;color:var(--ink-soft)}
+  .manif-cell .d em{color:var(--ink);font-style:italic;font-weight:500}
+
+  /* ─── Portfolio construction frows (from v30) ─── */
+  .frows{border-top:1px solid var(--line)}
+  .frow{display:grid;grid-template-columns:minmax(160px,.55fr) 1fr;gap:clamp(16px,3vw,44px);padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .frow .ft{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(20px,2.2vw,24px);font-weight:500;line-height:1.1;color:var(--ink)}
+  .frow .ft em{color:var(--accent);font-style:italic}
+  .frow .fd{font-size:14.5px;line-height:1.6;color:var(--ink-soft)}
+  .frow .fd em{color:var(--ink);font-style:italic;font-weight:500}
+  @media(max-width:560px){.frow{grid-template-columns:1fr;gap:6px}}
+
+  /* ─── Featured strategy: MOV 8-layer (from home) ─── */
+  .feat-strat{padding:clamp(60px,8vw,100px) 0;border-top:1px solid var(--line);background:color-mix(in srgb,var(--ink) 2.2%,transparent)}
+  .fs-grid{display:grid;grid-template-columns:1fr 1.45fr;gap:clamp(36px,5vw,68px);align-items:center}
+  @media(max-width:860px){.fs-grid{grid-template-columns:1fr;gap:28px}}
+  .fs-grid h2{font-size:clamp(34px,4.6vw,52px);line-height:1.02;margin-top:14px;margin-bottom:14px;max-width:16ch}
+  .fs-grid .lede{font-size:15px;color:var(--ink-soft);font-style:italic;max-width:42ch;line-height:1.65;margin-bottom:24px}
+  .fs-grid .lede em{color:var(--ink);font-style:italic;font-weight:500}
+  .fs-list{border:1px solid var(--line);background:var(--bg)}
+  .fs-list .row{display:grid;grid-template-columns:54px 1fr 130px;align-items:center;padding:15px 22px;border-bottom:1px solid var(--line);transition:padding-left .25s,background .25s}
+  .fs-list .row:last-child{border-bottom:none}
+  .fs-list .row:hover{padding-left:30px;background:color-mix(in srgb,var(--accent) 3%,transparent)}
+  .fs-list .rn{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:20px;color:var(--accent)}
+  .fs-list .ttl{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:17px;color:var(--ink);line-height:1.2}
+  .fs-list .ttl em{color:var(--accent);font-style:italic}
+  .fs-list .tag{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--ink-mute);text-align:right;letter-spacing:.05em;text-transform:uppercase}
+
+  /* ─── Track record locked-table (from v30) ─── */
+  .lockline{font-style:italic;font-size:14.5px;color:var(--ink-soft);margin-bottom:14px}
+  .locked{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+  .locked-head{display:flex;justify-content:space-between;align-items:baseline;padding:14px 20px;border-bottom:1px solid var(--line);position:relative;z-index:3}
+  .locked-head .lh{font-style:italic;font-size:13.5px;color:var(--ink-soft)}
+  .locked-head .lm{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--ink-mute);letter-spacing:.06em;text-transform:uppercase}
+  .ltable{padding:4px 20px 16px;filter:blur(5px);-webkit-filter:blur(5px);user-select:none;pointer-events:none}
+  .ltrow{display:grid;grid-template-columns:1.6fr .8fr .8fr .8fr;gap:14px;padding:11px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .ltrow:last-child{border-bottom:none}
+  .ltrow .s{font-size:15px;text-align:left}
+  .ltrow .c{text-align:right;font-size:15px;color:var(--ink-soft);font-family:"JetBrains Mono",monospace;font-size:13px}
+  .ltrow.h .s,.ltrow.h .c{font-style:italic;font-size:12.5px;color:var(--ink-mute);font-family:"Source Serif 4",serif}
+  .lock-ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px;z-index:2;background:color-mix(in srgb,var(--bg) 55%,transparent)}
+  .lock-ov .lic{color:var(--accent);margin-bottom:2px}
+  .lock-ov .lt{font-size:15.5px;color:var(--ink);max-width:36ch;line-height:1.45}
+  .lock-ov .lt em{color:var(--accent);font-style:italic;font-weight:500}
+  .lock-ov .la{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:2px}
+  .lock-ov .btn,.lock-ov .btn-out{padding:11px 22px;font-size:15px}
+
+  /* ─── Mindset cards (from home) ─── */
+  .mind-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line);background:var(--bg)}
+  @media(max-width:760px){.mind-grid{grid-template-columns:1fr}}
+  .mind-cell{padding:26px 28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;gap:18px;align-items:flex-start}
+  .mind-cell:nth-child(2n){border-right:none}
+  .mind-cell:nth-last-child(-n+2){border-bottom:none}
+  @media(max-width:760px){.mind-cell{border-right:none}.mind-cell:nth-last-child(-n+2){border-bottom:1px solid var(--line)}.mind-cell:last-child{border-bottom:none}}
+  .mind-cell .rn{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--accent);font-size:22px;line-height:1;flex-shrink:0;width:22px}
+  .mind-cell .body{flex:1}
+  .mind-cell .body h4{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:19px;line-height:1.2;margin-bottom:8px;letter-spacing:-.005em}
+  .mind-cell .body h4 em{color:var(--accent);font-style:italic}
+  .mind-cell .body p{font-size:13.5px;line-height:1.6;color:var(--ink-soft)}
+  .mind-cell .body p em{color:var(--ink);font-style:italic;font-weight:500}
+
+  /* ─── Compare table (from v30) ─── */
+  .compare{border-top:1px solid var(--ink-mute)}
+  .crow{display:grid;grid-template-columns:1fr 1.35fr 1.35fr;gap:clamp(14px,2.5vw,32px);padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .crow .ck{font-family:"Source Serif 4",serif;font-style:italic;font-size:14px;color:var(--ink-mute)}
+  .crow .cv{font-size:15px;line-height:1.5;color:var(--ink)}
+  .crow .cv em{color:var(--accent);font-style:italic;font-weight:500}
+  .crow.chead{padding:0 0 16px}
+  .crow.chead .cv{font-family:"Cormorant Garamond",serif;font-size:clamp(22px,2.6vw,28px);font-weight:500;color:var(--ink);font-style:normal}
+  .crow.chead .cv small{display:block;font-family:"Source Serif 4",serif;font-style:italic;font-size:12.5px;color:var(--ink-mute);margin-top:2px;font-weight:400}
+  .cnote{font-style:italic;font-size:13px;color:var(--ink-mute);margin-top:20px;max-width:60ch}
+  @media(max-width:620px){
+    .crow{grid-template-columns:1fr;gap:4px;padding:18px 0}
+    .crow .ck{font-style:normal;color:var(--ink);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
+    .crow.chead{display:none}
+    .crow .cv::before{content:attr(data-h);display:block;font-style:italic;font-size:11.5px;color:var(--accent);margin-top:7px;letter-spacing:.04em;text-transform:uppercase}
+  }
+
+  /* ─── FAQ (from v30) ─── */
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-item:first-of-type{border-top:1px solid var(--line)}
+  .faq-q{cursor:pointer;padding:20px 32px 20px 0;list-style:none;font-family:"Cormorant Garamond",serif;font-size:clamp(18px,2vw,22px);font-weight:500;line-height:1.25;position:relative;color:var(--ink)}
+  .faq-q::-webkit-details-marker{display:none}
+  .faq-q::after{content:"+";position:absolute;right:0;top:20px;color:var(--accent);font-size:22px;line-height:1;transition:transform .2s}
+  details[open] .faq-q::after{content:"\2212"}
+  .faq-q em{color:var(--accent);font-style:italic}
+  .faq-a{padding:0 0 20px;font-size:15px;color:var(--ink-soft);line-height:1.6;max-width:62ch}
+  .faq-a em{color:var(--ink);font-style:italic;font-weight:500}
+
+  /* ─── Close (from home) ─── */
+  .close{padding:clamp(72px,10vh,120px) 0;text-align:center;border-top:1px solid var(--line)}
+  .close h2{font-size:clamp(34px,5.2vw,60px);line-height:1.02;max-width:22ch;margin:0 auto 22px}
+  .close .sub{font-size:15.5px;color:var(--ink-soft);font-style:italic;max-width:52ch;margin:0 auto 32px;line-height:1.65}
+  .close .ct-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+  .close .small{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--ink-mute);letter-spacing:.07em;text-transform:uppercase}
+
+  /* ─── Footer ─── */
+  footer{border-top:1px solid var(--line);padding:48px 0 36px}
+  .footin{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:36px}
+  .footcols{display:flex;gap:clamp(34px,6vw,68px);flex-wrap:wrap}
+  .footcol h4{font-style:italic;font-weight:400;font-size:14px;color:var(--ink-mute);margin-bottom:13px}
+  .footcol a{display:block;color:var(--ink-soft);text-decoration:none;font-size:15px;margin-bottom:9px;transition:color .3s}
+  .footcol a:hover{color:var(--accent)}
+  .disc{padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  .disc span{font-size:12.5px;color:var(--ink-mute);line-height:1.6}
+  .disc .legal{max-width:64ch;font-style:italic}
+
+  @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  .lswitch{position:fixed;left:18px;bottom:18px;z-index:200;display:inline-flex;align-items:center;gap:8px;font-family:"Source Serif 4",serif;font-size:12.5px;font-style:italic;color:var(--ink);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border:1px solid var(--accent);padding:9px 15px;border-radius:999px;text-decoration:none}
+  .lswitch:hover{background:var(--accent);color:var(--btn-ink)}
+  .lswitch .i{font-style:normal}
+
+  /* === unified site header (standardized across all pages) === */
+  nav,nav.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:border-color .4s}
+  .navin{display:flex;align-items:center;justify-content:space-between;padding:15px 0;gap:24px}
+  .navr{display:flex;align-items:center;gap:20px}
+  .navr a{color:var(--ink-soft);text-decoration:none;font-size:14px;transition:color .3s}
+  .navr a:hover{color:var(--ink)}
+  .navr a.active{color:var(--ink);font-weight:500}
+  .navr a.cta{background:var(--btn-bg);color:var(--btn-ink);padding:9px 18px;font-weight:500}
+  .navr a.lite{border:1px solid var(--line);padding:8px 15px;color:var(--ink);font-weight:500}
+  .navr a.lite:hover{border-color:var(--accent);color:var(--accent)}
+  @media(max-width:1020px){.navr .navlink{display:none}}
+</style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav class="top" id="nav">
+    <div class="wrap navin">
+      <a class="wm" href="#top"><svg class="wm-ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="121.5 244.6 110.0 167.2" fill="none" style="height:1.05em;width:auto;vertical-align:-.16em;margin-right:7px"><path transform="matrix(.33995817,0,0,.33995817,76.5,225.75)" d="M220.2 523.6C220.2 425.09999 220.2 329.59999 220.2 233.99997 233 234.79998 234.4 236.29998 234.4 248.19997 234.4 324.19996 234.4 400.09999 234.29999 476.09999 234.29999 481.99998 233.99999 487.89997 233.79999 493.8 233.4 505.9 234.29999 507 245.9 505.19999 298 496.8 335.4 468.8 355.5 419.89997 379.9 360.39997 358.1 293.09999 304.3 257.49998 283.4 243.69997 261.5 231.39997 241.59999 216.39997 212.09999 194.09996 196.29999 163.09996 190.59999 126.59996 189.99999 122.59996 187.79999 119.09996 184.7 116.59996 172.4 107.09996 163 95.59996 155.8 80.29996 159.5 80.09996 224 78.999958 253.4 79.899959 286.3 80.79996 312.8 94.499958 332 121.899959 334.7 125.79996 339.6 129.09996 344.1 130.69995 361.30003 136.79996 378.80003 141.89995 396 147.89995 411.5 153.29994 423.4 163.29994 432.5 179.09995 423.2 176.29994 415.5 173.29994 407.5 171.59995 383.8 166.39995 360 167.09995 336.6 172.89995 321.1 176.79994 310.80003 187.69995 305.9 203.19995 304.9 206.19995 304.19999 209.29996 303.4 212.39995 289.5 207.39995 288.4 205.59995 293.9 192.89995 304.3 168.59995 324.1 157.89995 349.4 155.69995 352.69999 155.39995 358.9 154.69995 366 154.19995 341.9 144.49996 310.1 137.59995 284.6 135.29996 259.2 132.99996 233.70001 131.49996 207 129.49996 207.4 132.49996 207.4 135.59996 208.1 138.39995 217.1 172.49994 237.3 198.19995 267.2 216.59995 283 226.29994 299.1 235.59995 314.2 246.39995 367.2 284.49995 389.2 336.69996 376.5 400.49995 364.4 461.29994 325.7 499.99995 265.7 516.19998 251.4 519.8 236.4 520.9 220.2 523.6Z" fill="currentColor"/><path transform="matrix(.33995817,0,0,.33995817,76.5,225.75)" d="M183.4 93.4C183 94.200008 200.7 110.5 205.79999 111.8 216.79999 114.600009 305 122.600009 311.09999 123.4 310.89997 121.3 291.3 96.9 251.89998 95.3 231.2 94.8 195.8 93.4 183.4 93.4Z" fill="#FF6D0A"/></svg>flameback</a>
+      <div class="navr">
+        <a class="navlink" href="flameback-who-we-are.html">Who we are</a>
+        <a class="navlink" href="flameback-what-we-do.html">What we do</a>
+        <a class="navlink" href="flameback-our-work.html">Our work</a>
+        <a class="navlink" href="flameback-insights.html">Insights</a>
+        <a class="navlink" href="flameback-tools.html">Tools</a>
+        <a class="navlink" href="flameback-offbook.html">Off-book</a>
+        <a class="navlink" href="flameback-investor-relations.html">Investor Relations</a>
+        <a class="navlink lite" href="flameback-app-accounts.html">Login</a>
+        <a class="cta" href="flameback-app-splash.html">Schedule a conversation</a>
+        <button class="toggle" id="toggle">Light</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── HERO (home's language, v30's two-column) ─── -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <h1 class="hero-h">We don&rsquo;t predict the market. We <em>follow rules that compound.</em></h1>
+        <p class="hero-sub">Flameback is a quantitative wealth manager for Indian families with a global outlook. We grow patient capital using tested systems &mdash; <em>not forecasts, and not hunches.</em></p>
+        <div class="hero-ct">
+          <a class="btn" href="flameback-app-splash.html">Schedule a conversation <span class="ar">&rarr;</span></a>
+          <a class="btn-out" href="flameback-who-we-are.html">Who we are</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="hero-wmark">flameback.</div>
+  </section>
+
+  <!-- ─── NUMBERS ROW (from home) ─── -->
+  <div class="nums">
+    <div class="wrap">
+      <div class="nums-row">
+        <div class="nums-cell"><span class="l">Live since</span><span class="v">2017</span><span class="d">Investing systematically, through every kind of market</span></div>
+        <div class="nums-cell"><span class="l">Under management</span><span class="v"><em>&#8377; 105 Cr</em></span><span class="d">India and US strategies combined</span></div>
+        <div class="nums-cell"><span class="l">Live strategies</span><span class="v">18</span><span class="d">Each one built and tested on its own</span></div>
+        <div class="nums-cell"><span class="l">Capital structure</span><span class="v"><em>Founder-owned</em></span><span class="d">No VC, no PE, no bank ownership</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── i. OUR PROCESS (from v30, language polished) ─── -->
+  <section class="sec" id="how">
+    <div class="wrap">
+      <div class="head">
+        <span class="lab"><span class="n">i</span>Our process</span>
+        <h2>How we build a <em>strategy.</em></h2>
+        <p class="intro">We look for patterns in the market, turn them into tested rules, and run them with discipline. <em>The same four steps, on every strategy.</em></p>
+      </div>
+      <div class="body"><div class="cols c4">
+        <div class="col"><span class="cn">i.</span><h3>Research</h3><p>We look for patterns that have actually driven returns &mdash; in prices, company fundamentals, and the wider economy.</p></div>
+        <div class="col"><span class="cn">ii.</span><h3>Write the rules</h3><p>We turn each pattern into exact rules a computer can follow, with no room for guesswork.</p></div>
+        <div class="col"><span class="cn">iii.</span><h3>Test it</h3><p>We test on data the rules have never seen. We keep what holds up and drop what doesn&rsquo;t.</p></div>
+        <div class="col"><span class="cn">iv.</span><h3>Run it live</h3><p>We put the strategy to work with real money, and watch it closely.</p></div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ─── ii. THE FIRM IN THREE STATEMENTS (from home) ─── -->
+  <section class="sec" id="firm">
+    <div class="wrap">
+      <div class="head">
+        <span class="lab"><span class="n">ii</span>The firm, in three statements</span>
+        <h2>What this <em>actually means.</em></h2>
+        <p class="intro">Three plain statements about how we work.</p>
+      </div>
+      <div class="body"><div class="cols c3">
+        <div class="col manif-cell">
+          <span class="n">i.</span>
+          <h3>We invest like <em>engineers.</em></h3>
+          <p class="d">We use models, data, and computing power. We don&rsquo;t take a house view on the market or argue about whether to be bullish. <em>Strategies are designed and tested &mdash; not voted on.</em></p>
+        </div>
+        <div class="col manif-cell">
+          <span class="n">ii.</span>
+          <h3>We aim to compound through <em>every market.</em></h3>
+          <p class="d">Different approaches work in different conditions. We combine several of them, so the ride is smoother &mdash; <em>without giving up long-term growth.</em></p>
+        </div>
+        <div class="col manif-cell">
+          <span class="n">iii.</span>
+          <h3>We work with families who <em>think long-term.</em></h3>
+          <p class="d">No pitch decks, no fund-of-the-month. We work with a small number of families whose time horizon matches ours &mdash; <em>measured in years, even generations.</em></p>
+        </div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ─── iii. PORTFOLIO CONSTRUCTION (from v30) ─── -->
+  <section class="sec" id="you">
+    <div class="wrap">
+      <div class="head">
+        <span class="lab"><span class="n">iii</span>Portfolio construction</span>
+        <h2>Built around each <em>client.</em></h2>
+        <p class="intro">Your mix of strategies follows your situation &mdash; not a four-box risk quiz. <em>The method is systematic; your portfolio isn&rsquo;t generic.</em></p>
+      </div>
+      <div class="body"><div class="frows">
+        <div class="frow"><div class="ft">Return <em>objective</em></div><div class="fd">How fast you want your money to grow, in plain terms.</div></div>
+        <div class="frow"><div class="ft">Ability to take risk</div><div class="fd">What you can afford to lose without it hurting &mdash; your income, savings, and commitments.</div></div>
+        <div class="frow"><div class="ft">Willingness to take risk</div><div class="fd">How much of a drop you can stomach &mdash; separate from what you can afford.</div></div>
+        <div class="frow"><div class="ft">Preferences</div><div class="fd">Anything you&rsquo;d rather not own &mdash; certain stocks, sectors, or themes.</div></div>
+        <div class="frow"><div class="ft">Execution</div><div class="fd">Whether we act for you, or <em>check with you before every trade.</em></div></div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ─── iv. FEATURED STRATEGY: MOV (from home) ─── -->
+  <section class="feat-strat" id="work">
+    <div class="wrap">
+      <div class="fs-grid">
+        <div>
+          <span class="lab"><span class="n">iv</span>One strategy, eight layers</span>
+          <h2>Momentum of <em>velocity.</em></h2>
+          <p class="lede">A real look at what one of our strategies is made of &mdash; not the summary, the actual build underneath. <em>Every layer is there for a reason.</em></p>
+          <a class="btn-out" href="flameback-our-work.html">See the full stack &rarr;</a>
+        </div>
+        <div class="fs-list">
+          <div class="row"><span class="rn">i</span><span class="ttl">Universe selection</span><span class="tag">NSE 500</span></div>
+          <div class="row"><span class="rn">ii</span><span class="ttl">Quality <em>screen</em></span><span class="tag">~28% removed</span></div>
+          <div class="row"><span class="rn">iii</span><span class="ttl">Momentum measurement</span><span class="tag">12-1 month</span></div>
+          <div class="row"><span class="rn">iv</span><span class="ttl">Velocity <em>overlay</em></span><span class="tag">d/dt</span></div>
+          <div class="row"><span class="rn">v</span><span class="ttl">Risk weighting</span><span class="tag">Risk parity</span></div>
+          <div class="row"><span class="rn">vi</span><span class="ttl">Drawdown control</span><span class="tag">Vol target 14%</span></div>
+          <div class="row"><span class="rn">vii</span><span class="ttl">Portfolio construction</span><span class="tag">35&ndash;50 names</span></div>
+          <div class="row"><span class="rn">viii</span><span class="ttl">Execution</span><span class="tag">Monthly</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── v. TRACK RECORD (locked, from v30) ─── -->
+  <section class="sec" id="record">
+    <div class="wrap">
+      <div class="head">
+        <span class="lab"><span class="n">v</span>Track record</span>
+        <h2>Eight years of <em>live results.</em></h2>
+        <p class="intro">A real track record across many strategies and market cycles, in both India and the US &mdash; the bad stretches included.</p>
+      </div>
+      <div class="body">
+        <div class="locked">
+          <div class="locked-head"><span class="lh">Strategy performance</span><span class="lm">SINCE 2017 &middot; NET OF FEES</span></div>
+          <div class="ltable" aria-hidden="true">
+            <div class="ltrow h"><span class="s">Strategy</span><span class="c">Worst yr</span><span class="c">Avg p.a.</span><span class="c">Best yr</span></div>
+            <div class="ltrow"><span class="s">Patience</span><span class="c">&minus;12.0</span><span class="c">+16.4</span><span class="c">+38.0</span></div>
+            <div class="ltrow"><span class="s">Steady</span><span class="c">&minus;8.0</span><span class="c">+8.6</span><span class="c">+18.0</span></div>
+            <div class="ltrow"><span class="s">Momentum of velocity</span><span class="c">&minus;22.0</span><span class="c">+14.2</span><span class="c">+41.0</span></div>
+            <div class="ltrow"><span class="s">Value</span><span class="c">&minus;16.0</span><span class="c">+12.0</span><span class="c">+33.0</span></div>
+            <div class="ltrow"><span class="s">Carry</span><span class="c">&minus;9.0</span><span class="c">+9.4</span><span class="c">+21.0</span></div>
+            <div class="ltrow"><span class="s">Multi-asset</span><span class="c">&minus;11.0</span><span class="c">+11.8</span><span class="c">+27.0</span></div>
+          </div>
+          <div class="lock-ov">
+            <span class="lic"><svg width="26" height="28" viewBox="0 0 24 26" fill="none"><rect x="3" y="10" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M7 10V7a5 5 0 0 1 10 0v3" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="16.5" r="1.7" fill="currentColor"/></svg></span>
+            <p class="lt">We show the full numbers to <em>registered users.</em> Create an account and you&rsquo;ll see the entire eight-year record &mdash; the good years and the bad ones.</p>
+            <div class="la">
+              <a class="btn" href="flameback-app-splash.html">Create an account <span class="ar">&rarr;</span></a>
+              <a class="btn-out" href="flameback-app-accounts.html">Already a client? Log in</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── vi. WHO WE WORK WITH (mindset, from home) ─── -->
+  <section class="sec" id="who">
+    <div class="wrap">
+      <div class="head">
+        <span class="lab"><span class="n">vi</span>Who we work with</span>
+        <h2>Who we work <em>best with.</em></h2>
+        <p class="intro">We work with a small number of families. What makes someone a good fit isn&rsquo;t the size of the cheque &mdash; it&rsquo;s how they think about markets, time, and evidence. <em>If this sounds like you, we should talk.</em></p>
+      </div>
+      <div class="body">
+        <div class="mind-grid">
+          <div class="mind-cell"><span class="rn">i.</span><div class="body"><h4>Patient over <em>years.</em></h4><p>You measure progress in years, not quarters. You know the best compounding often happens in the quiet stretches.</p></div></div>
+          <div class="mind-cell"><span class="rn">ii.</span><div class="body"><h4>Curious <em>how it works.</em></h4><p>You read past the headline number. You want to understand the method, the assumptions, and the risks &mdash; not just be reassured.</p></div></div>
+          <div class="mind-cell"><span class="rn">iii.</span><div class="body"><h4>Wary of <em>marketing.</em></h4><p>You&rsquo;re sceptical of star managers and quarterly performance theatre. You trust method and evidence over personalities and stories.</p></div></div>
+          <div class="mind-cell"><span class="rn">iv.</span><div class="body"><h4>Steady through <em>drops.</em></h4><p>You know any strategy worth holding will have hard stretches &mdash; and you can hold through them, financially and temperamentally.</p></div></div>
+          <div class="mind-cell"><span class="rn">v.</span><div class="body"><h4>Want a <em>partner,</em> not a product.</h4><p>You want an ongoing relationship, not just a statement. You&rsquo;re comfortable sharing the full picture &mdash; insurance, property, business &mdash; because it all connects.</p></div></div>
+          <div class="mind-cell"><span class="rn">vi.</span><div class="body"><h4><em>Global</em> in outlook.</h4><p>You don&rsquo;t think Indian equities are the only thing worth owning. You&rsquo;re open to a mix of assets and markets &mdash; without giving up on India&rsquo;s growth.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── vii. FAQ (from v30) ─── -->
+  <section class="sec" id="faq">
+    <div class="wrap">
+      <div class="head">
+        <span class="lab"><span class="n">vii</span>FAQ</span>
+        <h2>Common <em>questions.</em></h2>
+        <p class="intro">The questions people actually ask, answered plainly.</p>
+      </div>
+      <div class="body">
+        <details class="faq-item">
+          <summary class="faq-q">Where are client investments <em>held?</em></summary>
+          <div class="faq-a">In an account in your own name, with SEBI-registered brokers or custodians. <em>We never hold your money ourselves.</em></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How long does <em>onboarding</em> take?</summary>
+          <div class="faq-a">A first conversation can usually happen within the week. KYC and account setup take two to three business days once we&rsquo;ve agreed to work together.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Is there a <em>lock-in?</em></summary>
+          <div class="faq-a">No lock-in. We suggest giving it at least three years to work &mdash; but you can leave at any time.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How are portfolios <em>reported</em> on?</summary>
+          <div class="faq-a">A live dashboard with daily NAV and holdings, plus formal statements as required by the relevant regulator.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Does the firm <em>publish</em> performance?</summary>
+          <div class="faq-a">Yes &mdash; to registered users. The numbers aren&rsquo;t on the open web, but anyone who creates an account can see the full record.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">What does the firm <em>not</em> do?</summary>
+          <div class="faq-a">No commission products. No insurance sales. No real estate. No startup deals. <em>Managing wealth is all we do.</em></div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Who <em>owns</em> the firm?</summary>
+          <div class="faq-a">The <em>founders, employees, clients, and well-wishers</em> own the firm. No VC, no PE, no bank. Because clients can own a piece of their own wealth manager, we can make long-term decisions without pressure from outside money.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CLOSE (from home) ─── -->
+  <section class="close">
+    <div class="wrap">
+      <h2>The first conversation is just a <em>conversation.</em></h2>
+      <p class="sub">No slides, no pitch, no commitment. We spend most of it asking questions &mdash; and we&rsquo;ll tell you honestly if we&rsquo;re not a fit. Plenty of first conversations end right there. That&rsquo;s fine.</p>
+      <div class="ct-row">
+        <a class="btn" href="flameback-app-splash.html">Schedule a conversation <span class="ar">&rarr;</span></a>
+        <a class="btn-out" href="flameback-who-we-are.html">Read about the firm</a>
+      </div>
+      <div class="small">30 MIN &middot; BANGALORE OFFICE OR GOOGLE MEET &middot; NO COMMITMENT</div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="wrap">
+      <div class="footin">
+        <a class="wm" href="#top"><svg class="wm-ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="121.5 244.6 110.0 167.2" fill="none" style="height:1.05em;width:auto;vertical-align:-.16em;margin-right:7px"><path transform="matrix(.33995817,0,0,.33995817,76.5,225.75)" d="M220.2 523.6C220.2 425.09999 220.2 329.59999 220.2 233.99997 233 234.79998 234.4 236.29998 234.4 248.19997 234.4 324.19996 234.4 400.09999 234.29999 476.09999 234.29999 481.99998 233.99999 487.89997 233.79999 493.8 233.4 505.9 234.29999 507 245.9 505.19999 298 496.8 335.4 468.8 355.5 419.89997 379.9 360.39997 358.1 293.09999 304.3 257.49998 283.4 243.69997 261.5 231.39997 241.59999 216.39997 212.09999 194.09996 196.29999 163.09996 190.59999 126.59996 189.99999 122.59996 187.79999 119.09996 184.7 116.59996 172.4 107.09996 163 95.59996 155.8 80.29996 159.5 80.09996 224 78.999958 253.4 79.899959 286.3 80.79996 312.8 94.499958 332 121.899959 334.7 125.79996 339.6 129.09996 344.1 130.69995 361.30003 136.79996 378.80003 141.89995 396 147.89995 411.5 153.29994 423.4 163.29994 432.5 179.09995 423.2 176.29994 415.5 173.29994 407.5 171.59995 383.8 166.39995 360 167.09995 336.6 172.89995 321.1 176.79994 310.80003 187.69995 305.9 203.19995 304.9 206.19995 304.19999 209.29996 303.4 212.39995 289.5 207.39995 288.4 205.59995 293.9 192.89995 304.3 168.59995 324.1 157.89995 349.4 155.69995 352.69999 155.39995 358.9 154.69995 366 154.19995 341.9 144.49996 310.1 137.59995 284.6 135.29996 259.2 132.99996 233.70001 131.49996 207 129.49996 207.4 132.49996 207.4 135.59996 208.1 138.39995 217.1 172.49994 237.3 198.19995 267.2 216.59995 283 226.29994 299.1 235.59995 314.2 246.39995 367.2 284.49995 389.2 336.69996 376.5 400.49995 364.4 461.29994 325.7 499.99995 265.7 516.19998 251.4 519.8 236.4 520.9 220.2 523.6Z" fill="currentColor"/><path transform="matrix(.33995817,0,0,.33995817,76.5,225.75)" d="M183.4 93.4C183 94.200008 200.7 110.5 205.79999 111.8 216.79999 114.600009 305 122.600009 311.09999 123.4 310.89997 121.3 291.3 96.9 251.89998 95.3 231.2 94.8 195.8 93.4 183.4 93.4Z" fill="#FF6D0A"/></svg>flameback</a>
+        <div class="footcols">
+          <div class="footcol"><h4>The firm</h4><a href="flameback-who-we-are.html">Who we are</a><a href="flameback-what-we-do.html">What we do</a><a href="flameback-our-work.html">Our work</a><a href="flameback-clients.html">Clients</a></div>
+          <div class="footcol"><h4>Open</h4><a href="flameback-insights.html">Insights</a><a href="flameback-tools.html">Tools</a><a href="flameback-offbook.html">Off-book</a></div>
+          <div class="footcol"><h4>Get started</h4><a href="flameback-app-splash.html">Schedule a conversation</a><a href="flameback-what-we-do.html">What we do</a><a href="#faq">FAQ</a></div>
+          <div class="footcol"><h4>Contact</h4><a href="#">hello@flameback.in</a><a href="#">Bangalore, India</a></div>
+        </div>
+      </div>
+      <div class="disc">
+        <span>&copy; 2026 Flameback Capital Private Limited</span>
+        <span class="legal">SEBI registered &middot; SEC filed for US strategy. Investments are subject to market risk. This page is for information only and is not an offer or solicitation. Past performance does not guarantee future results.</span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  var root=document.documentElement, tg=document.getElementById('toggle');
+  tg.addEventListener('click',function(){root.classList.toggle('light');tg.textContent=root.classList.contains('light')?'Dark':'Light';});
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>16)});
+</script>
+  <script src="site-footer.js"></script>
+<script src="reload.js"></script>
+  <a class="lswitch" href="flameback-home-alt.html"><span class="i">&#8646;</span> Alternate landing</a>
+</body>
+</html>

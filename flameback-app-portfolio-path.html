@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>flameback. — Portfolio path</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#1A1714;--ink:#F2EDE3;--ink-soft:rgba(242,237,227,.66);--ink-mute:rgba(242,237,227,.44);--line:rgba(242,237,227,.16);--accent:#FF6D0A;--btn-bg:#FF6D0A;--btn-ink:#1A1714;--grain-blend:screen;--grain-op:.055;--card:rgba(242,237,227,.03)}
+  :root.light{--bg:#FCFAF6;--ink:#1A1714;--ink-soft:rgba(26,23,20,.68);--ink-mute:rgba(26,23,20,.46);--line:rgba(26,23,20,.14);--accent:#B23E08;--btn-bg:#1A1714;--btn-ink:#FCFAF6;--grain-blend:multiply;--grain-op:.035;--card:rgba(26,23,20,.025)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Serif 4",serif;transition:background .5s,color .5s;line-height:1.55;font-variant-numeric:tabular-nums;min-height:100vh;display:flex;flex-direction:column}
+  body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;mix-blend-mode:var(--grain-blend);opacity:var(--grain-op);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  h1,h2,h3,h4{font-family:"Cormorant Garamond",serif;font-weight:500;letter-spacing:-.014em;line-height:1.04}
+  h1 em,h2 em,h3 em{color:var(--accent);font-style:italic;font-weight:500}
+  .mono{font-family:"JetBrains Mono",monospace;letter-spacing:.07em;text-transform:uppercase}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(22px,5vw,44px)}
+
+  /* ===== site chrome (matches marketing pages) ===== */
+  nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .4s}
+  nav.scrolled{border-color:var(--line)}
+  .navin{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:24px}
+  .wm{font-family:"Source Serif 4",serif;font-weight:600;font-size:18px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+  .wm .p{color:var(--accent)}
+  .navr{display:flex;align-items:center;gap:22px}
+  .navr a{color:var(--ink-soft);text-decoration:none;font-size:14px;transition:color .3s}
+  .navr a:hover{color:var(--ink)}
+  .toggle{background:none;border:1px solid var(--line);color:var(--ink-soft);cursor:pointer;font-family:"Source Serif 4",serif;font-size:12.5px;font-style:italic;padding:5px 13px;border-radius:999px}
+  @media(max-width:1020px){.navr .navlink{display:none}}
+
+  footer{padding:60px 0 32px;position:relative;z-index:2;border-top:1px solid var(--line);margin-top:auto}
+  .footin{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:36px}
+  .footcols{display:flex;gap:clamp(34px,5vw,64px);flex-wrap:wrap}
+  .footcol h4{font-style:italic;font-weight:400;font-size:12.5px;color:var(--ink-mute);margin-bottom:14px;letter-spacing:.04em;text-transform:uppercase;font-family:"JetBrains Mono",monospace}
+  .footcol a{display:block;color:var(--ink-soft);text-decoration:none;font-size:14px;margin-bottom:9px}
+  .footcol a:hover{color:var(--accent)}
+  .disc{padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  .disc span{font-size:11.5px;color:var(--ink-mute);line-height:1.6}
+  .disc .legal{max-width:72ch;font-style:italic}
+  .disc .reg-links a{color:var(--ink-mute);text-decoration:none;font-size:11.5px;font-style:italic;margin-left:14px}
+
+  /* ===== screen content — centred column on the wide page ===== */
+  main{position:relative;z-index:2;flex:1}
+  .screen{max-width:600px;margin:0 auto;padding:clamp(44px,7vh,84px) 0 clamp(56px,9vh,96px)}
+  .back-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-style:italic;color:var(--ink-mute);text-decoration:none;margin-bottom:30px;transition:color .3s}
+  .back-link:hover{color:var(--ink-soft)}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--ink-mute);letter-spacing:.09em;text-transform:uppercase;margin-bottom:14px}
+  .eyebrow .l{width:20px;height:1px;background:var(--accent)}
+
+  /* progress indicator */
+  .progress{margin-bottom:30px}
+  .progress .plab{display:flex;align-items:center;justify-content:space-between;font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--ink-mute);letter-spacing:.09em;text-transform:uppercase;margin-bottom:8px}
+  .progress .plab b{color:var(--accent);font-weight:500}
+  .track{height:3px;border-radius:999px;background:var(--line);overflow:hidden}
+  .track .fill{height:100%;background:var(--accent);width:40%;border-radius:999px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+
+  h1.ttl{font-size:clamp(38px,5.4vw,56px);line-height:1.02;margin-bottom:8px}
+  .lede{font-size:14.5px;font-style:italic;color:var(--ink-soft);margin-bottom:20px}
+
+  /* context bar */
+  .ctx{border:1px solid var(--line);background:var(--card);padding:14px 16px;display:flex;flex-wrap:wrap;gap:14px 20px;margin-bottom:24px}
+  .ctx .item{display:flex;flex-direction:column;gap:3px}
+  .ctx .k{font-family:"JetBrains Mono",monospace;font-size:8.5px;color:var(--ink-mute);letter-spacing:.07em;text-transform:uppercase}
+  .ctx .v{font-family:"Cormorant Garamond",serif;font-size:18px;color:var(--ink)}
+  .ctx .v b{color:var(--accent);font-weight:500}
+
+  /* path cards */
+  .pcard{border:1px solid var(--line);background:var(--card);padding:20px 18px;margin-bottom:14px;cursor:pointer;position:relative;transition:border-color .2s,background .2s}
+  .pcard:hover{border-color:var(--ink-mute)}
+  .pcard.on{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 6%,transparent)}
+  .pcard .badge{position:absolute;top:-9px;left:16px;background:var(--accent);color:var(--btn-ink);font-family:"JetBrains Mono",monospace;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+  .pcard h3{font-size:23px;margin-bottom:4px}
+  .pcard .feat{font-size:13px;color:var(--ink-soft);margin-bottom:14px}
+  .pcard .feat span{color:var(--accent)}
+  .pcard .stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .pcard .st{background:var(--bg);padding:9px 8px;display:flex;flex-direction:column;gap:3px}
+  .pcard .st .sk{font-family:"JetBrains Mono",monospace;font-size:8px;color:var(--ink-mute);letter-spacing:.05em;text-transform:uppercase}
+  .pcard .st .sv{font-size:12.5px;color:var(--ink);line-height:1.25}
+  .pcard .tick{position:absolute;top:16px;right:16px;width:22px;height:22px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:transparent;font-size:12px;transition:.2s}
+  .pcard.on .tick{background:var(--accent);border-color:var(--accent);color:var(--btn-ink)}
+
+  .explainer{border:1px solid var(--line);border-left:2px solid var(--accent);background:var(--card);padding:16px 18px;display:flex;gap:13px;align-items:flex-start;margin-top:8px}
+  .explainer .n{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:28px;color:var(--accent);line-height:.8}
+  .explainer .t{font-size:13px;line-height:1.6;color:var(--ink-soft)}
+  .explainer .t b{color:var(--ink);font-weight:500;font-style:normal}
+
+  .cta{display:flex;align-items:center;justify-content:center;gap:11px;width:100%;background:var(--btn-bg);color:var(--btn-ink);font-family:"Source Serif 4",serif;font-size:15.5px;font-weight:500;padding:16px;text-decoration:none;border:none;cursor:pointer;transition:gap .35s,opacity .3s;margin-top:24px}
+  .cta:hover{gap:15px;opacity:.93}
+  .cta[disabled]{opacity:.34;cursor:not-allowed;pointer-events:none}
+</style>
+</head>
+<body>
+
+  <nav id="nav">
+    <div class="wrap navin">
+      <a class="wm" href="index.html"><svg class="wm-ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="121.5 244.6 110.0 167.2" fill="none" style="height:1.05em;width:auto;vertical-align:-.16em;margin-right:7px"><path transform="matrix(.33995817,0,0,.33995817,76.5,225.75)" d="M220.2 523.6C220.2 425.09999 220.2 329.59999 220.2 233.99997 233 234.79998 234.4 236.29998 234.4 248.19997 234.4 324.19996 234.4 400.09999 234.29999 476.09999 234.29999 481.99998 233.99999 487.89997 233.79999 493.8 233.4 505.9 234.29999 507 245.9 505.19999 298 496.8 335.4 468.8 355.5 419.89997 379.9 360.39997 358.1 293.09999 304.3 257.49998 283.4 243.69997 261.5 231.39997 241.59999 216.39997 212.09999 194.09996 196.29999 163.09996 190.59999 126.59996 189.99999 122.59996 187.79999 119.09996 184.7 116.59996 172.4 107.09996 163 95.59996 155.8 80.29996 159.5 80.09996 224 78.999958 253.4 79.899959 286.3 80.79996 312.8 94.499958 332 121.899959 334.7 125.79996 339.6 129.09996 344.1 130.69995 361.30003 136.79996 378.80003 141.89995 396 147.89995 411.5 153.29994 423.4 163.29994 432.5 179.09995 423.2 176.29994 415.5 173.29994 407.5 171.59995 383.8 166.39995 360 167.09995 336.6 172.89995 321.1 176.79994 310.80003 187.69995 305.9 203.19995 304.9 206.19995 304.19999 209.29996 303.4 212.39995 289.5 207.39995 288.4 205.59995 293.9 192.89995 304.3 168.59995 324.1 157.89995 349.4 155.69995 352.69999 155.39995 358.9 154.69995 366 154.19995 341.9 144.49996 310.1 137.59995 284.6 135.29996 259.2 132.99996 233.70001 131.49996 207 129.49996 207.4 132.49996 207.4 135.59996 208.1 138.39995 217.1 172.49994 237.3 198.19995 267.2 216.59995 283 226.29994 299.1 235.59995 314.2 246.39995 367.2 284.49995 389.2 336.69996 376.5 400.49995 364.4 461.29994 325.7 499.99995 265.7 516.19998 251.4 519.8 236.4 520.9 220.2 523.6Z" fill="currentColor"/><path transform="matrix(.33995817,0,0,.33995817,76.5,225.75)" d="M183.4 93.4C183 94.200008 200.7 110.5 205.79999 111.8 216.79999 114.600009 305 122.600009 311.09999 123.4 310.89997 121.3 291.3 96.9 251.89998 95.3 231.2 94.8 195.8 93.4 183.4 93.4Z" fill="#FF6D0A"/></svg>flameback</a>
+      <div class="navr">
+        <button class="toggle" id="toggle">Light</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap">
+      <div class="screen">
+        <a href="flameback-app-amount.html" class="back-link">&larr; Back to amount</a>
+
+        <div class="progress">
+          <div class="plab"><span>Build your portfolio</span><span><b>Step 2</b> of 4</span></div>
+          <div class="track"><div class="fill"></div></div>
+        </div>
+
+    <h1 class="ttl">How would you like to <em>build it?</em></h1>
+    <p class="lede">Three routes, all to the same place. Pick the one that fits.</p>
+
+    <div class="ctx">
+      <div class="item"><span class="k">Risk score</span><span class="v"><b id="ctxScore">62</b> · Moderate</span></div>
+      <div class="item"><span class="k">Strategy tier</span><span class="v">Moderate</span></div>
+      <div class="item"><span class="k">Investment</span><span class="v" id="ctxInv">₹5 lakh</span></div>
+    </div>
+
+    <!-- AI-Optimised -->
+    <div class="pcard on" data-path="ai" data-next="flameback-app-portfolio-review.html">
+      <span class="badge">Recommended</span>
+      <span class="tick">&#10003;</span>
+      <h3>AI-Optimised Portfolio</h3>
+      <p class="feat"><span>Profile-Matched</span> · <span>Auto-Rebalance</span></p>
+      <div class="stats">
+        <div class="st"><span class="sk">Time</span><span class="sv">Instant</span></div>
+        <div class="st"><span class="sk">Decisions</span><span class="sv">None needed</span></div>
+        <div class="st"><span class="sk">Best for</span><span class="sv">Most investors</span></div>
+      </div>
+    </div>
+
+    <!-- Build Your Own -->
+    <div class="pcard" data-path="byo" data-next="flameback-app-marketplace.html">
+      <span class="tick">&#10003;</span>
+      <h3>Build Your Own</h3>
+      <p class="feat"><span>Full Control</span> · <span>Strategy Marketplace</span> · <span>Guardrailed</span></p>
+      <div class="stats">
+        <div class="st"><span class="sk">Time</span><span class="sv">5–10 min</span></div>
+        <div class="st"><span class="sk">Decisions</span><span class="sv">You choose</span></div>
+        <div class="st"><span class="sk">Best for</span><span class="sv">Experienced investors</span></div>
+      </div>
+    </div>
+
+    <!-- Talk to an Advisor -->
+    <div class="pcard" data-path="advisor" data-next="flameback-app-advisor-config.html">
+      <span class="tick">&#10003;</span>
+      <h3>Talk to an Advisor</h3>
+      <p class="feat"><span>Human Guidance</span> · <span>Profile Pre-Reviewed</span> · <span>No Obligation</span></p>
+      <div class="stats">
+        <div class="st"><span class="sk">Time</span><span class="sv">20 min call</span></div>
+        <div class="st"><span class="sk">Decisions</span><span class="sv">Guided</span></div>
+        <div class="st"><span class="sk">Best for</span><span class="sv">First-time investors</span></div>
+      </div>
+    </div>
+
+    <div class="explainer">
+      <span class="n">“</span>
+      <span class="t">All three paths lead to the same place — a Cruise portfolio you review and approve before money moves. <b>You're always in control.</b></span>
+    </div>
+
+    <button class="cta" id="cta">Continue &rarr;</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footin">
+        <a class="wm" href="index.html"><svg class="wm-ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="121.5 244.6 110.0 167.2" fill="none" style="height:1.05em;width:auto;vertical-align:-.16em;margin-right:7px"><path transform="matrix(.33995817,0,0,.33995817,76.5,225.75)" d="M220.2 523.6C220.2 425.09999 220.2 329.59999 220.2 233.99997 233 234.79998 234.4 236.29998 234.4 248.19997 234.4 324.19996 234.4 400.09999 234.29999 476.09999 234.29999 481.99998 233.99999 487.89997 233.79999 493.8 233.4 505.9 234.29999 507 245.9 505.19999 298 496.8 335.4 468.8 355.5 419.89997 379.9 360.39997 358.1 293.09999 304.3 257.49998 283.4 243.69997 261.5 231.39997 241.59999 216.39997 212.09999 194.09996 196.29999 163.09996 190.59999 126.59996 189.99999 122.59996 187.79999 119.09996 184.7 116.59996 172.4 107.09996 163 95.59996 155.8 80.29996 159.5 80.09996 224 78.999958 253.4 79.899959 286.3 80.79996 312.8 94.499958 332 121.899959 334.7 125.79996 339.6 129.09996 344.1 130.69995 361.30003 136.79996 378.80003 141.89995 396 147.89995 411.5 153.29994 423.4 163.29994 432.5 179.09995 423.2 176.29994 415.5 173.29994 407.5 171.59995 383.8 166.39995 360 167.09995 336.6 172.89995 321.1 176.79994 310.80003 187.69995 305.9 203.19995 304.9 206.19995 304.19999 209.29996 303.4 212.39995 289.5 207.39995 288.4 205.59995 293.9 192.89995 304.3 168.59995 324.1 157.89995 349.4 155.69995 352.69999 155.39995 358.9 154.69995 366 154.19995 341.9 144.49996 310.1 137.59995 284.6 135.29996 259.2 132.99996 233.70001 131.49996 207 129.49996 207.4 132.49996 207.4 135.59996 208.1 138.39995 217.1 172.49994 237.3 198.19995 267.2 216.59995 283 226.29994 299.1 235.59995 314.2 246.39995 367.2 284.49995 389.2 336.69996 376.5 400.49995 364.4 461.29994 325.7 499.99995 265.7 516.19998 251.4 519.8 236.4 520.9 220.2 523.6Z" fill="currentColor"/><path transform="matrix(.33995817,0,0,.33995817,76.5,225.75)" d="M183.4 93.4C183 94.200008 200.7 110.5 205.79999 111.8 216.79999 114.600009 305 122.600009 311.09999 123.4 310.89997 121.3 291.3 96.9 251.89998 95.3 231.2 94.8 195.8 93.4 183.4 93.4Z" fill="#FF6D0A"/></svg>flameback</a>
+        <div class="footcols">
+          <div class="footcol"><h4>The firm</h4><a href="flameback-who-we-are.html">Who we are</a><a href="flameback-what-we-do.html">What we do</a><a href="flameback-our-work.html">Our work</a><a href="flameback-clients.html">Clients</a></div>
+          <div class="footcol"><h4>Open</h4><a href="flameback-insights.html">Insights</a><a href="flameback-tools.html">Tools</a><a href="flameback-offbook.html">Off-book</a></div>
+          <div class="footcol"><h4>Contact</h4><a href="flameback-app-splash.html">Schedule a conversation</a><a href="#">hello@flameback.in</a><a href="#">Bangalore, India</a></div>
+        </div>
+      </div>
+      <div class="disc">
+        <span>&copy; 2026 Flameback Capital Pvt Ltd</span>
+        <span class="legal">SEBI registered &middot; SEC filed for US strategy. Investments are subject to market risk. Past performance is not indicative of future results.</span>
+        <span class="reg-links"><a href="flameback-pms-disclosure.html">PMS disclosure</a><a href="flameback-advisory-disclosure.html">IA disclosure</a></span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  var t=document.getElementById('toggle');
+  t.onclick=function(){var l=document.documentElement.classList.toggle('light');t.textContent=l?'Dark':'Light';};
+  // nav border on scroll
+  var nv=document.getElementById('nav');
+  window.addEventListener('scroll',function(){nv.classList.toggle('scrolled',window.scrollY>8);});
+
+  // ── ₹ lakh/crore formatting ──
+  function fmtIN(n){n=String(Math.round(n));var last3=n.slice(-3),rest=n.slice(0,-3);if(rest)last3=','+last3;rest=rest.replace(/\B(?=(\d\d)+(?!\d))/g,',');return rest+last3;}
+  function trim2(x){return parseFloat(x.toFixed(2));}
+  function lakhCrore(n){if(n>=10000000){return '₹'+trim2(n/10000000)+' crore';}if(n>=100000){return '₹'+trim2(n/100000)+' lakh';}return '₹'+fmtIN(n);}
+
+  // read amounts carried from S-D01
+  var p=new URLSearchParams(location.search);
+  var lump=parseInt(p.get('lump')||'500000',10), sip=parseInt(p.get('sip')||'0',10);
+  var inv=lakhCrore(lump)+(sip>0?' + '+lakhCrore(sip)+'/mo':'');
+  document.getElementById('ctxInv').textContent=inv;
+
+  // path selection
+  var sel='ai', next='flameback-app-portfolio-review.html';
+  var cards=document.querySelectorAll('.pcard');
+  cards.forEach(function(c){
+    c.onclick=function(){
+      cards.forEach(function(x){x.classList.remove('on');});
+      c.classList.add('on'); sel=c.dataset.path; next=c.dataset.next;
+    };
+  });
+
+  // CTA — carry context forward
+  document.getElementById('cta').onclick=function(){
+    var q='?lump='+lump+'&sip='+sip+'&hz='+encodeURIComponent(p.get('hz')||'');
+    window.location.href=next+q;
+  };
+</script>
+  <script src="site-footer.js"></script>
+  <script src="reload.js"></script>
+</body>
+</html>

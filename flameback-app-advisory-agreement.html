@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>flameback. — Advisory agreement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#1A1714;--ink:#F2EDE3;--ink-soft:rgba(242,237,227,.66);--ink-mute:rgba(242,237,227,.44);--line:rgba(242,237,227,.16);--accent:#FF6D0A;--btn-bg:#FF6D0A;--btn-ink:#1A1714;--grain-blend:screen;--grain-op:.055;--card:rgba(242,237,227,.03)}
+  :root.light{--bg:#FCFAF6;--ink:#1A1714;--ink-soft:rgba(26,23,20,.68);--ink-mute:rgba(26,23,20,.46);--line:rgba(26,23,20,.14);--accent:#B23E08;--btn-bg:#1A1714;--btn-ink:#FCFAF6;--grain-blend:multiply;--grain-op:.035;--card:rgba(26,23,20,.025)}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:"Source Serif 4",serif;transition:background .5s,color .5s;line-height:1.55;font-variant-numeric:tabular-nums;min-height:100vh;display:flex;flex-direction:column}
+  body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;mix-blend-mode:var(--grain-blend);opacity:var(--grain-op);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  h1,h2,h3,h4{font-family:"Cormorant Garamond",serif;font-weight:500;letter-spacing:-.014em;line-height:1.04}
+  h1 em,h2 em,h3 em{color:var(--accent);font-style:italic;font-weight:500}
+  .mono{font-family:"JetBrains Mono",monospace;letter-spacing:.07em;text-transform:uppercase}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(22px,5vw,44px)}
+
+  /* ===== site chrome (matches marketing pages) ===== */
+  nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .4s}
+  nav.scrolled{border-color:var(--line)}
+  .navin{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:24px}
+  .wm{font-family:"Source Serif 4",serif;font-weight:600;font-size:18px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+  .wm .p{color:var(--accent)}
+  .navr{display:flex;align-items:center;gap:22px}
+  .navr a{color:var(--ink-soft);text-decoration:none;font-size:14px;transition:color .3s}
+  .navr a:hover{color:var(--ink)}
+  .navr a.cta{background:var(--btn-bg);color:var(--btn-ink);padding:8px 16px;font-weight:500}
+  .toggle{background:none;border:1px solid var(--line);color:var(--ink-soft);cursor:pointer;font-family:"Source Serif 4",serif;font-size:12.5px;font-style:italic;padding:5px 13px;border-radius:999px}
+  @media(max-width:1020px){.navr .navlink{display:none}}
+
+  footer{padding:60px 0 32px;position:relative;z-index:2;border-top:1px solid var(--line);margin-top:auto}
+  .footin{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:36px}
+  .footcols{display:flex;gap:clamp(34px,5vw,64px);flex-wrap:wrap}
+  .footcol h4{font-style:italic;font-weight:400;font-size:12.5px;color:var(--ink-mute);margin-bottom:14px;letter-spacing:.04em;text-transform:uppercase;font-family:"JetBrains Mono",monospace}
+  .footcol a{display:block;color:var(--ink-soft);text-decoration:none;font-size:14px;margin-bottom:9px}
+  .footcol a:hover{color:var(--accent)}
+  .disc{padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  .disc span{font-size:11.5px;color:var(--ink-mute);line-height:1.6}
+  .disc .legal{max-width:72ch;font-style:italic}
+  .disc .reg-links a{color:var(--ink-mute);text-decoration:none;font-size:11.5px;font-style:italic;margin-left:14px}
+
+  /* ===== screen content — centred column on the wide page ===== */
+  main{position:relative;z-index:2;flex:1}
+  .screen{max-width:600px;margin:0 auto;padding:clamp(44px,7vh,84px) 0 clamp(56px,9vh,96px)}
+  .back-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-style:italic;color:var(--ink-mute);text-decoration:none;margin-bottom:30px;transition:color .3s}
+  .back-link:hover{color:var(--ink-soft)}
+
+  .prog{display:flex;align-items:center;gap:7px;margin-bottom:8px}
+  .prog .dot{flex:1;height:3px;border-radius:999px;background:var(--line)}
+  .prog .dot.on{background:var(--accent)}
+  .prog .dot.done{background:color-mix(in srgb,var(--accent) 55%,transparent)}
+  .step-lab{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--ink-mute);letter-spacing:.09em;text-transform:uppercase;margin-bottom:22px;display:block}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--ink-mute);letter-spacing:.09em;text-transform:uppercase;margin-bottom:14px}
+  .eyebrow .l{width:20px;height:1px;background:var(--accent)}
+  h1.head{font-size:clamp(32px,8.4vw,42px);line-height:1.03;margin-bottom:10px}
+  .lede{font-size:15px;font-style:italic;color:var(--ink-soft);margin-bottom:22px;line-height:1.6}
+
+  .need{border:1px solid var(--line);border-left:2px solid var(--accent);background:var(--card);padding:14px 16px;font-size:13px;line-height:1.6;color:var(--ink-soft);margin-bottom:22px}
+  .need b{color:var(--ink);font-weight:500;font-style:normal}
+
+  /* scrollable agreement */
+  .doc-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px}
+  .doc-h .lab{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--ink-mute);letter-spacing:.09em;text-transform:uppercase}
+  .doc-h .read-flag{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mute)}
+  .doc-h .read-flag.done{color:var(--accent)}
+  .doc{border:1px solid var(--line);background:var(--card);height:240px;overflow-y:auto;padding:18px 17px;margin-bottom:6px;position:relative}
+  .doc h4{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:19px;color:var(--ink);margin:16px 0 6px}
+  .doc h4:first-child{margin-top:0}
+  .doc p{font-size:12.5px;line-height:1.62;color:var(--ink-soft);margin-bottom:10px}
+  .doc .clause-no{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--accent);letter-spacing:.06em}
+  .doc::-webkit-scrollbar{width:4px}
+  .doc::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px}
+  .scroll-hint{font-family:"JetBrains Mono",monospace;font-size:9px;color:var(--ink-mute);letter-spacing:.07em;text-transform:uppercase;margin-bottom:20px;display:block;transition:opacity .4s}
+  .scroll-hint.hide{opacity:0}
+
+  /* accept */
+  .accept{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--line);background:var(--card);padding:16px 16px;margin-bottom:18px;cursor:pointer;transition:border-color .3s;opacity:.5;pointer-events:none}
+  .accept.live{opacity:1;pointer-events:auto}
+  .accept.on{border-color:var(--accent)}
+  .box{width:20px;height:20px;border:1.5px solid var(--ink-mute);border-radius:4px;flex:none;display:grid;place-items:center;margin-top:1px;transition:.2s}
+  .accept.on .box{border-color:var(--accent);background:var(--accent);color:var(--btn-ink)}
+  .box .tick{font-size:13px;opacity:0;transition:.2s}
+  .accept.on .box .tick{opacity:1}
+  .accept .lbl{font-size:13.5px;line-height:1.55;color:var(--ink)}
+
+  .cta{display:flex;align-items:center;justify-content:center;gap:11px;width:100%;background:var(--btn-bg);color:var(--btn-ink);font-family:"Source Serif 4",serif;font-size:15.5px;font-weight:500;padding:16px;text-decoration:none;border:none;cursor:pointer;transition:gap .35s,opacity .3s}
+  .cta:hover{gap:15px;opacity:.93}
+  .cta:disabled{opacity:.4;cursor:not-allowed}
+  .cta:disabled:hover{gap:11px;opacity:.4}
+  .sim-lab{font-family:"JetBrains Mono",monospace;font-size:8.5px;color:var(--ink-mute);letter-spacing:.08em;text-transform:uppercase;margin-top:18px;text-align:center;display:block;opacity:.7}
+
+  /* success */
+  .stage{display:none}.stage.show{display:block}
+  .seal{width:54px;height:54px;border-radius:50%;border:1px solid var(--accent);display:grid;place-items:center;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:30px;color:var(--accent);margin:0 auto 20px}
+  .sec-link{display:inline-block;margin-top:18px;font-family:"Source Serif 4",serif;font-style:italic;font-size:14px;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+  .sec-link:hover{color:var(--ink)}
+  .loader{display:inline-block;width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;vertical-align:-2px;margin-right:8px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+  <nav id="nav">
+    <div class="wrap navin">
+      <a class="wm" href="index.html"><svg class="wm-ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="121.5 244.6 110.0 167.2" fill="none" style="height:1.05em;width:auto;vertical-align:-.16em;margin-right:7px"><path transform="matrix(.33995817,0,0,.33995817,76.5,225.75)" d="M220.2 523.6C220.2 425.09999 220.2 329.59999 220.2 233.99997 233 234.79998 234.4 236.29998 234.4 248.19997 234.4 324.19996 234.4 400.09999 234.29999 476.09999 234.29999 481.99998 233.99999 487.89997 233.79999 493.8 233.4 505.9 234.29999 507 245.9 505.19999 298 496.8 335.4 468.8 355.5 419.89997 379.9 360.39997 358.1 293.09999 304.3 257.49998 283.4 243.69997 261.5 231.39997 241.59999 216.39997 212.09999 194.09996 196.29999 163.09996 190.59999 126.59996 189.99999 122.59996 187.79999 119.09996 184.7 116.59996 172.4 107.09996 163 95.59996 155.8 80.29996 159.5 80.09996 224 78.999958 253.4 79.899959 286.3 80.79996 312.8 94.499958 332 121.899959 334.7 125.79996 339.6 129.09996 344.1 130.69995 361.30003 136.79996 378.80003 141.89995 396 147.89995 411.5 153.29994 423.4 163.29994 432.5 179.09995 423.2 176.29994 415.5 173.29994 407.5 171.59995 383.8 166.39995 360 167.09995 336.6 172.89995 321.1 176.79994 310.80003 187.69995 305.9 203.19995 304.9 206.19995 304.19999 209.29996 303.4 212.39995 289.5 207.39995 288.4 205.59995 293.9 192.89995 304.3 168.59995 324.1 157.89995 349.4 155.69995 352.69999 155.39995 358.9 154.69995 366 154.19995 341.9 144.49996 310.1 137.59995 284.6 135.29996 259.2 132.99996 233.70001 131.49996 207 129.49996 207.4 132.49996 207.4 135.59996 208.1 138.39995 217.1 172.49994 237.3 198.19995 267.2 216.59995 283 226.29994 299.1 235.59995 314.2 246.39995 367.2 284.49995 389.2 336.69996 376.5 400.49995 364.4 461.29994 325.7 499.99995 265.7 516.19998 251.4 519.8 236.4 520.9 220.2 523.6Z" fill="currentColor"/><path transform="matrix(.33995817,0,0,.33995817,76.5,225.75)" d="M183.4 93.4C183 94.200008 200.7 110.5 205.79999 111.8 216.79999 114.600009 305 122.600009 311.09999 123.4 310.89997 121.3 291.3 96.9 251.89998 95.3 231.2 94.8 195.8 93.4 183.4 93.4Z" fill="#FF6D0A"/></svg>flameback</a>
+      <div class="navr">
+        <button class="toggle" id="toggle">Light</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap">
+      <div class="screen">
+        <a href="flameback-app-kyc.html" class="back-link">&larr; Back</a>
+
+    <div class="prog">
+      <span class="dot done"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+    <span class="step-lab">Activation · Step 2 of 5 — Advisory agreement</span>
+
+    <!-- Intro / sign -->
+    <section class="stage show" id="intro">
+      <h1 class="head">Now the <em>advisory agreement.</em></h1>
+      <p class="lede">This is the contract between you and Flameback Capital as your SEBI-registered investment adviser.</p>
+
+      <div class="need">Keep your <b>Aadhaar</b> and registered mobile handy — you'll receive an OTP to sign.</div>
+
+      <div class="doc-h">
+        <span class="lab">Read the agreement</span>
+        <span class="read-flag" id="readFlag">Scroll to the end</span>
+      </div>
+      <div class="doc" id="doc">
+        <h4>Investment Advisory Agreement</h4>
+        <p><span class="clause-no">1.</span> This agreement is entered into between Aarav (“the Client”) and Flameback Capital Pvt. Ltd., a SEBI-registered Investment Adviser (RIA No. INA000017xxx), governing the advisory relationship for the portfolio “My growth bet”.</p>
+        <h4>Scope of advice</h4>
+        <p><span class="clause-no">2.</span> Flameback shall provide investment advice matched to the Client's risk profile and stated objectives. The relationship is advisory: the Client approves every trade before it executes. Flameback holds no discretionary authority over the Client's funds or securities.</p>
+        <h4>Fees</h4>
+        <p><span class="clause-no">3.</span> A one-time onboarding fee of ₹5,000 applies, fully offset against future advisory fees. The recurring advisory fee is 0.9% of assets under advice per annum, billed on the cadence the Client selects, in line with SEBI's fee regulations for Investment Advisers.</p>
+        <h4>No assured returns</h4>
+        <p><span class="clause-no">4.</span> Investments are subject to market risk. Flameback makes no representation or guarantee of returns. Past performance and backtested figures are not indicative of future results.</p>
+        <h4>Conflicts &amp; disclosures</h4>
+        <p><span class="clause-no">5.</span> Flameback receives no commissions, referral fees, or distribution incentives from any product manufacturer. The Adviser's only remuneration is the fee paid directly by the Client.</p>
+        <h4>Suitability &amp; records</h4>
+        <p><span class="clause-no">6.</span> Advice is based on the information the Client has provided through profiling. The Client undertakes to keep this information current. Flameback retains all records and this signed agreement for the period required under SEBI regulations.</p>
+        <h4>Termination</h4>
+        <p><span class="clause-no">7.</span> Either party may terminate this agreement with written notice. On termination, advice ceases; the Client's holdings remain in the Client's own broker account throughout.</p>
+        <h4>Governing law</h4>
+        <p><span class="clause-no">8.</span> This agreement is governed by the laws of India and subject to the jurisdiction of the courts at Mumbai. By signing, the Client confirms they have read and understood every clause above.</p>
+      </div>
+      <span class="scroll-hint" id="scrollHint">Scroll the agreement to the end to enable signing.</span>
+
+      <div class="accept" id="accept" role="checkbox" aria-checked="false" tabindex="0">
+        <span class="box"><span class="tick">✓</span></span>
+        <span class="lbl">I've read the advisory agreement and I'm ready to e-sign it with my Aadhaar OTP.</span>
+      </div>
+
+      <button class="cta" id="signBtn" disabled>Review &amp; Sign &rarr;</button>
+      <a href="#" class="sec-link" id="previewLink">Read the agreement</a>
+      <span class="sim-lab">E-sign partner · Digio · Aadhaar OTP</span>
+    </section>
+
+    <!-- vendor handoff -->
+    <section class="stage" id="waiting" style="text-align:center;padding-top:30px">
+      <div class="seal" style="border-style:dashed"><span class="loader" style="margin:0"></span></div>
+      <h1 class="head" style="font-size:30px">Signing in <em>progress.</em></h1>
+      <p class="lede" style="margin-top:10px">Enter the Aadhaar OTP with Digio to sign. We'll confirm the moment it's done.</p>
+      <span class="sim-lab">Simulate the vendor's response</span>
+      <div style="display:flex;gap:10px;margin-top:14px">
+        <button class="cta" id="simSigned" style="font-size:13px;padding:12px">Signed ✓</button>
+        <button class="cta" id="simFailed" style="font-size:13px;padding:12px;background:transparent;color:var(--ink);border:1px solid var(--line)">Failed</button>
+      </div>
+    </section>
+
+    <!-- success -->
+    <section class="stage" id="success" style="text-align:center;padding-top:30px">
+      <div class="seal">✓</div>
+      <h1 class="head">All <em>signed.</em></h1>
+      <p class="lede" style="margin-top:10px">Your advisory agreement is in your records. Next, we'll link your broker.</p>
+      <a href="flameback-app-broker-linking.html" class="cta">Continue &rarr;</a>
+      <a href="#" class="sec-link">View signed agreement</a>
+    </section>
+
+    <!-- failed -->
+    <section class="stage" id="failed" style="text-align:center;padding-top:30px">
+      <div class="seal" style="border-color:var(--accent);color:var(--accent)">↺</div>
+      <h1 class="head">Couldn't complete <em>the signing.</em></h1>
+      <p class="lede" style="margin-top:10px">The OTP wasn't confirmed in time. Let's run the signing once more.</p>
+      <button class="cta" id="retryBtn">Try again &rarr;</button>
+      <a href="flameback-app-advisor-config.html" class="sec-link">Talk to us</a>
+    </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footin">
+        <a class="wm" href="index.html"><svg class="wm-ic" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="121.5 244.6 110.0 167.2" fill="none" style="height:1.05em;width:auto;vertical-align:-.16em;margin-right:7px"><path transform="matrix(.33995817,0,0,.33995817,76.5,225.75)" d="M220.2 523.6C220.2 425.09999 220.2 329.59999 220.2 233.99997 233 234.79998 234.4 236.29998 234.4 248.19997 234.4 324.19996 234.4 400.09999 234.29999 476.09999 234.29999 481.99998 233.99999 487.89997 233.79999 493.8 233.4 505.9 234.29999 507 245.9 505.19999 298 496.8 335.4 468.8 355.5 419.89997 379.9 360.39997 358.1 293.09999 304.3 257.49998 283.4 243.69997 261.5 231.39997 241.59999 216.39997 212.09999 194.09996 196.29999 163.09996 190.59999 126.59996 189.99999 122.59996 187.79999 119.09996 184.7 116.59996 172.4 107.09996 163 95.59996 155.8 80.29996 159.5 80.09996 224 78.999958 253.4 79.899959 286.3 80.79996 312.8 94.499958 332 121.899959 334.7 125.79996 339.6 129.09996 344.1 130.69995 361.30003 136.79996 378.80003 141.89995 396 147.89995 411.5 153.29994 423.4 163.29994 432.5 179.09995 423.2 176.29994 415.5 173.29994 407.5 171.59995 383.8 166.39995 360 167.09995 336.6 172.89995 321.1 176.79994 310.80003 187.69995 305.9 203.19995 304.9 206.19995 304.19999 209.29996 303.4 212.39995 289.5 207.39995 288.4 205.59995 293.9 192.89995 304.3 168.59995 324.1 157.89995 349.4 155.69995 352.69999 155.39995 358.9 154.69995 366 154.19995 341.9 144.49996 310.1 137.59995 284.6 135.29996 259.2 132.99996 233.70001 131.49996 207 129.49996 207.4 132.49996 207.4 135.59996 208.1 138.39995 217.1 172.49994 237.3 198.19995 267.2 216.59995 283 226.29994 299.1 235.59995 314.2 246.39995 367.2 284.49995 389.2 336.69996 376.5 400.49995 364.4 461.29994 325.7 499.99995 265.7 516.19998 251.4 519.8 236.4 520.9 220.2 523.6Z" fill="currentColor"/><path transform="matrix(.33995817,0,0,.33995817,76.5,225.75)" d="M183.4 93.4C183 94.200008 200.7 110.5 205.79999 111.8 216.79999 114.600009 305 122.600009 311.09999 123.4 310.89997 121.3 291.3 96.9 251.89998 95.3 231.2 94.8 195.8 93.4 183.4 93.4Z" fill="#FF6D0A"/></svg>flameback</a>
+        <div class="footcols">
+          <div class="footcol"><h4>The firm</h4><a href="flameback-who-we-are.html">Who we are</a><a href="flameback-what-we-do.html">What we do</a><a href="flameback-our-work.html">Our work</a><a href="flameback-clients.html">Clients</a></div>
+          <div class="footcol"><h4>Open</h4><a href="flameback-insights.html">Insights</a><a href="flameback-tools.html">Tools</a><a href="flameback-offbook.html">Off-book</a></div>
+          <div class="footcol"><h4>Contact</h4><a href="flameback-app-splash.html">Schedule a conversation</a><a href="#">hello@flameback.in</a><a href="#">Bangalore, India</a></div>
+        </div>
+      </div>
+      <div class="disc">
+        <span>&copy; 2026 Flameback Capital Pvt Ltd</span>
+        <span class="legal">SEBI registered &middot; SEC filed for US strategy. Investments are subject to market risk. Past performance is not indicative of future results.</span>
+        <span class="reg-links"><a href="flameback-pms-disclosure.html">PMS disclosure</a><a href="flameback-advisory-disclosure.html">IA disclosure</a></span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  var t=document.getElementById('toggle');
+  t.onclick=function(){var l=document.documentElement.classList.toggle('light');t.textContent=l?'Dark':'Light';};
+  var nv=document.getElementById('nav');
+  window.addEventListener('scroll',function(){nv.classList.toggle('scrolled',window.scrollY>8);});
+
+  var doc=document.getElementById('doc'),hint=document.getElementById('scrollHint'),flag=document.getElementById('readFlag');
+  var accept=document.getElementById('accept'),signBtn=document.getElementById('signBtn');
+  var read=false,accepted=false;
+
+  function checkRead(){
+    if(doc.scrollTop+doc.clientHeight>=doc.scrollHeight-8){
+      read=true;
+      accept.classList.add('live');
+      hint.classList.add('hide');
+      flag.textContent='Read ✓';flag.classList.add('done');
+    }
+  }
+  doc.addEventListener('scroll',checkRead);
+  checkRead();
+
+  function toggleAccept(){
+    if(!read)return;
+    accepted=!accepted;
+    accept.classList.toggle('on',accepted);
+    accept.setAttribute('aria-checked',accepted);
+    signBtn.disabled=!accepted;
+  }
+  accept.addEventListener('click',toggleAccept);
+  accept.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();toggleAccept();}});
+
+  function show(id){
+    ['intro','waiting','success','failed'].forEach(function(s){
+      document.getElementById(s).classList.toggle('show',s===id);
+    });
+    window.scrollTo(0,0);
+  }
+  signBtn.onclick=function(){if(!signBtn.disabled)show('waiting');};
+  document.getElementById('retryBtn').onclick=function(){show('waiting');};
+  document.getElementById('simSigned').onclick=function(){show('success');};
+  document.getElementById('simFailed').onclick=function(){show('failed');};
+  document.getElementById('previewLink').onclick=function(e){e.preventDefault();doc.scrollIntoView({behavior:'smooth'});};
+</script>
+  <script src="site-footer.js"></script>
+  <script src="reload.js"></script>
+</body>
+</html>
