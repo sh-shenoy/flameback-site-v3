@@ -183,7 +183,7 @@
     <div class="wrap">
       <div class="dateline"><span class="l"></span><span class="lab">QLab Notes</span></div>
       <h1>What we&rsquo;re testing.</h1>
-      <p class="hero-sub">The research lab&rsquo;s working notebook. Live experiments, paper trades, signals under evaluation, and what reached production &mdash; and what did not. We are honest about what we don&rsquo;t yet know.</p>
+      <p class="hero-sub">The research lab&rsquo;s working notebook. Live experiments, paper trades, signals under test, what reached production &mdash; and what did not. We are honest about what we don&rsquo;t yet know.</p>
     </div>
   </section>
 
@@ -223,7 +223,7 @@
         <div class="note-body">
           <div class="note-cat">Signal research &middot; Equity, India</div>
           <h3 class="note-title">Multi-cap momentum with regime overlay</h3>
-          <p class="note-abs">Testing whether a simple volatility regime indicator improves drawdowns in the multi-cap momentum strategy. The overlay flags &lsquo;high-vol&rsquo; regimes and modestly reduces exposure. Paper trade is 6 months in. Early results show smoother equity curve through Mar 2026 sell-off, but the cost in flat markets is unclear yet.</p>
+          <p class="note-abs">Testing whether a simple volatility indicator cuts drawdowns in the multi-cap momentum strategy. The overlay flags high-vol periods and trims exposure a little. The paper trade is 6 months in. Early results show a smoother equity curve through the Mar 2026 sell-off, but the cost in flat markets isn&rsquo;t clear yet.</p>
           <div class="note-meta">
             <span class="nm-item"><span class="nm-l">Universe</span><span class="nm-v">NSE 500</span></span>
             <span class="nm-item"><span class="nm-l">Paper days</span><span class="nm-v">183</span></span>
@@ -249,7 +249,7 @@
         <div class="note-body">
           <div class="note-cat">Signal research &middot; Cross-sectional</div>
           <h3 class="note-title">Cross-sectional volatility as a momentum modulator</h3>
-          <p class="note-abs">A signal that scales momentum exposure based on the cross-sectional vol of constituent returns. The hypothesis is that crowded momentum trades coincide with vol compression. Backtest is encouraging; small live allocation begins in Q3 2026.</p>
+          <p class="note-abs">A signal that scales momentum exposure to the cross-sectional vol of constituent returns. The idea: crowded momentum trades tend to line up with vol compression. The backtest is encouraging; a small live allocation begins in Q3 2026.</p>
           <div class="note-meta">
             <span class="nm-item"><span class="nm-l">Stage</span><span class="nm-v">Backtest complete</span></span>
             <span class="nm-item"><span class="nm-l">Sample</span><span class="nm-v">2010&ndash;2025</span></span>
@@ -275,7 +275,7 @@
         <div class="note-body">
           <div class="note-cat">Implementation &middot; Cost reduction</div>
           <h3 class="note-title">Reducing turnover via lookback aggregation</h3>
-          <p class="note-abs">A signal-smoothing technique that combines 3-month, 6-month, and 12-month momentum windows with declining weights. Cut realised turnover from 95% annual to 78% across the Large-cap Momentum strategy without measurable performance drag. Now live since March rebalance.</p>
+          <p class="note-abs">A smoothing technique that blends 3-month, 6-month, and 12-month momentum windows with declining weights. It cut realised turnover from 95% a year to 78% across the Large-cap Momentum strategy with no measurable drag on returns. Live since the March rebalance.</p>
           <div class="note-meta">
             <span class="nm-item"><span class="nm-l">Strategy</span><span class="nm-v">Large-cap Momentum</span></span>
             <span class="nm-item"><span class="nm-l">Turnover</span><span class="nm-v">95% &rarr; <span class="acc">78%</span></span></span>
@@ -309,7 +309,7 @@
         <div class="note-body">
           <div class="note-cat">Execution &middot; Smart routing</div>
           <h3 class="note-title">Multi-broker smart order routing in FIST</h3>
-          <p class="note-abs">FIST now routes orders across Zerodha, Kotak, and a third broker based on real-time spread and depth data. A/B testing across 6 weeks shows 12% reduction in aggregate execution costs versus single-broker baseline. Note: not a strategy change, but the strategy returns include this.</p>
+          <p class="note-abs">FIST now routes orders across Zerodha, Kotak, and a third broker using real-time spread and depth data. Six weeks of A/B testing shows a 12% cut in total execution costs versus the single-broker baseline. Not a strategy change, but strategy returns include it.</p>
           <div class="note-meta">
             <span class="nm-item"><span class="nm-l">A/B period</span><span class="nm-v">6 weeks</span></span>
             <span class="nm-item"><span class="nm-l">Cost reduction</span><span class="nm-v acc">12%</span></span>
@@ -334,7 +334,7 @@
         <div class="note-body">
           <div class="note-cat">Risk management &middot; Stops</div>
           <h3 class="note-title">When trailing stops actually help (and when they don&rsquo;t)</h3>
-          <p class="note-abs">A systematic study of trailing stop effectiveness across 14 strategies and 9 years of data. Findings are mixed: stops help in high-conviction concentrated portfolios, hurt in broad-universe momentum. Note documents the conditions under which each is true.</p>
+          <p class="note-abs">A systematic study of how well trailing stops work, across 14 strategies and 9 years of data. The findings are mixed: stops help in concentrated, high-conviction portfolios and hurt in broad-universe momentum. The note sets out when each holds.</p>
           <div class="note-meta">
             <span class="nm-item"><span class="nm-l">Strategies tested</span><span class="nm-v">14</span></span>
             <span class="nm-item"><span class="nm-l">Sample period</span><span class="nm-v">2017&ndash;2026</span></span>
@@ -366,7 +366,7 @@
         <div class="note-body">
           <div class="note-cat">Signal research &middot; Earnings revisions</div>
           <h3 class="note-title">Sector rotation signals from earnings revisions</h3>
-          <p class="note-abs">Testing whether trailing analyst revision breadth at the sector level predicts subsequent relative performance. Early backtest results are promising for industrials and consumer; less clean for financials. Live paper trade beginning.</p>
+          <p class="note-abs">Testing whether trailing analyst revision breadth at the sector level predicts later relative performance. Early backtest results look promising for industrials and consumer, less clean for financials. A live paper trade is starting.</p>
           <div class="note-meta">
             <span class="nm-item"><span class="nm-l">Universe</span><span class="nm-v">11 sectors, India</span></span>
             <span class="nm-item"><span class="nm-l">Period</span><span class="nm-v">2015&ndash;2025</span></span>
@@ -391,7 +391,7 @@
         <div class="note-body">
           <div class="note-cat">Signal research &middot; Pairs trading</div>
           <h3 class="note-title">Pairs trading in Indian financials: a six-month dry run</h3>
-          <p class="note-abs">The setup looked clean on paper &mdash; mean-reverting pairs in HDFC Bank / ICICI Bank, SBI / Axis, and the NBFC complex. Six months later, the cost of leg-in/leg-out plus widening bid-ask in stress periods was eating the alpha. Filed under &ldquo;works in theory&rdquo; with notes on what would need to change.</p>
+          <p class="note-abs">The setup looked clean on paper &mdash; mean-reverting pairs in HDFC Bank / ICICI Bank, SBI / Axis, and the NBFC complex. Six months later, the cost of legging in and out, plus widening bid-ask in stress, was eating the alpha. Filed under &ldquo;works in theory,&rdquo; with notes on what would need to change.</p>
           <div class="note-meta">
             <span class="nm-item"><span class="nm-l">Live test</span><span class="nm-v">6 months</span></span>
             <span class="nm-item"><span class="nm-l">Gross alpha</span><span class="nm-v">+3.2%</span></span>
@@ -417,7 +417,7 @@
         <div class="note-body">
           <div class="note-cat">Signal research &middot; Alternative data</div>
           <h3 class="note-title">Web-scraped hiring signals as a leading indicator</h3>
-          <p class="note-abs">Hypothesis: changes in hiring posts predict revenue growth at sector level. Tested with 18 months of scraped data across 12 sectors. Signal exists statistically but the lead time is too short and the data was too noisy for practical use. Documented for future revisit.</p>
+          <p class="note-abs">The idea: changes in hiring posts predict revenue growth at the sector level. Tested with 18 months of scraped data across 12 sectors. The signal exists statistically, but the lead time is too short and the data too noisy to use. Documented for a future revisit.</p>
           <div class="note-meta">
             <span class="nm-item"><span class="nm-l">Data window</span><span class="nm-v">18 months</span></span>
             <span class="nm-item"><span class="nm-l">Sectors</span><span class="nm-v">12</span></span>
@@ -439,7 +439,7 @@
   <section class="sub-banner">
     <div class="wrap">
       <h2>Get research notes when they&rsquo;re published.</h2>
-      <p>Roughly twice a month: new experiments, results from tests already running, and what we are shelving and why.</p>
+      <p>Roughly twice a month: new experiments, results from tests already running, and what we&rsquo;re shelving and why.</p>
       <form class="sub-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Subscribed';">
         <input type="email" placeholder="name@firm.com" required/>
         <button type="submit">Subscribe</button>

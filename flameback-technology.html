@@ -200,7 +200,7 @@
     <div class="wrap">
       <div class="hero-eb"><span class="l"></span><span>Who we are &middot; section v</span><span class="dateline">FOUR LAYERS &middot; FIST LIVE SINCE 2017</span></div>
       <h1 class="h-h"><em>Technology.</em></h1>
-      <p class="h-sub">A trade engine, a data lake, a research environment, and an agent layer &mdash; four pieces of software we built and maintain ourselves. They are the reason a quantitative strategy here can move from idea to live capital without a vendor in the loop.</p>
+      <p class="h-sub">A trade engine, a data lake, a research environment, and an agent layer &mdash; four pieces of software we built and maintain ourselves. They are why a strategy here can go from idea to live capital without a vendor in the loop.</p>
       <div class="h-cta">
         <a class="btn" href="flameback-app-splash.html">Schedule a conversation &rarr;</a>
         <a class="btn-out" href="flameback-our-work.html">See what the system produces</a>
@@ -220,8 +220,8 @@
       <div class="prose-grid">
         <div class="meta lab"><span class="n">a.</span>The decision in 2017</div>
         <div class="prose">
-          <p>When the firm was founded in 2017, the standard practice was to buy. Order management from one vendor, portfolio accounting from another, a research toolkit from a third, a back-test framework from a fourth. The components rarely spoke to each other. The cost of stitching them together &mdash; in engineering time, in reconciliation overhead, in latency, in opacity &mdash; was paid forever.</p>
-          <p>The founders made a different decision. We would <em>write our own</em> for the parts that determine edge: the trade engine, the research environment, the data layer, and eventually the agent layer that sits on top of them. The parts that do not determine edge &mdash; the broker, the custodian, the exchange, the cloud &mdash; we would buy, like everyone else.</p>
+          <p>When the firm was founded in 2017, the standard move was to buy. Order management from one vendor, portfolio accounting from another, a research toolkit from a third, a back-test framework from a fourth. The pieces rarely spoke to each other. The cost of stitching them together &mdash; engineering time, reconciliation, latency, opacity &mdash; was paid forever.</p>
+          <p>The founders chose differently. We would <em>write our own</em> for the parts that determine edge: the trade engine, the research environment, the data layer, and eventually the agent layer on top of them. The parts that don&rsquo;t determine edge &mdash; the broker, the custodian, the exchange, the cloud &mdash; we would buy, like everyone else.</p>
           <p>That decision compounds. Eight years later, we run on software we understand at every line. <strong>If something breaks, the person who can fix it works in the same office.</strong> If a research hypothesis needs a new data field, we add it to the data lake the same week. If an execution algorithm needs to change, the engineer changes it.</p>
         </div>
       </div>
@@ -240,7 +240,7 @@
         <div class="meta lab"><span class="n">a.</span>How to read the diagram</div>
         <div class="prose">
           <p>The data lake sits at the bottom. Everything we trade on, monitor, or back-test is in it &mdash; tick data, fundamentals, filings, news, corporate actions. Two systems read from it: <em>FIST</em>, which trades, and <em>QX</em>, which researches. Above them sits <em>Jarvis</em>, the agent layer &mdash; the LLM-backed workflows the team uses to run the firm without drowning in keystrokes.</p>
-          <p>The bought components &mdash; brokers, exchanges, custodians, cloud &mdash; sit at the perimeter. They have replacements. The four written components in the middle do not.</p>
+          <p>The bought parts &mdash; brokers, exchanges, custodians, cloud &mdash; sit at the perimeter. They have replacements. The four written parts in the middle do not.</p>
         </div>
       </div>
 
@@ -370,9 +370,9 @@
           <div class="stats"><div><em>~8 yrs</em>live production</div><div><em>0</em>missed open / close</div></div>
         </div>
         <div class="body">
-          <p>FIST &mdash; the firm&rsquo;s order management and execution kernel &mdash; is the oldest piece of software at the firm. It went live on a single strategy in October 2017 and has not had an unplanned outage during market hours since. <em>It is the part of the stack that touches client capital.</em></p>
-          <p>What it does, end to end: receives signals from the research environment, applies pre-trade risk gates (concentration, leverage, sector caps, drawdown limits), routes orders to brokers via FIX, manages execution algorithms (VWAP, TWAP, implementation-shortfall variants), reconciles fills against intended positions in real time, and writes every action to an audit log that is unalterable.</p>
-          <p>It is deliberately conservative. <strong>It does not get rewritten because someone read a new paper.</strong> Changes go through code review, paper-trading validation, and a staged rollout. The cost of bugs is paid in client capital, not in engineering time.</p>
+          <p>FIST &mdash; the firm&rsquo;s order management and execution kernel &mdash; is the oldest piece of software here. It went live on a single strategy in October 2017 and has had no unplanned outage during market hours since. <em>It is the part of the stack that touches client capital.</em></p>
+          <p>End to end: it receives signals from the research environment, applies pre-trade risk gates (concentration, leverage, sector caps, drawdown limits), routes orders to brokers via FIX, manages execution algorithms (VWAP, TWAP, implementation-shortfall variants), reconciles fills against intended positions in real time, and writes every action to an unalterable audit log.</p>
+          <p>It is deliberately conservative. <strong>It does not get rewritten because someone read a new paper.</strong> Changes go through code review, paper-trading validation, and a staged rollout. The cost of bugs is paid in client capital, not engineering time.</p>
         </div>
         <div class="specs">
           <div class="sp"><span class="lh">LANGUAGE</span><span class="rh">Core in <em>Python</em> with C++ extensions for the order book and risk-gate hot path. FIX 4.4 to brokers.</span></div>
@@ -393,9 +393,9 @@
           <div class="stats"><div><em>~14 TB</em>tick &amp; reference</div><div><em>2018</em>tick-level since</div></div>
         </div>
         <div class="body">
-          <p>Quantitative work is bottlenecked by data quality long before it is bottlenecked by ideas. The firm&rsquo;s data lake is the answer to that bottleneck. It holds tick-level price data for the Indian universe since 2018, point-in-time fundamentals back further, corporate actions, filings, regulatory disclosures, and news. <em>Everything is survivorship-clean.</em> Everything is point-in-time.</p>
-          <p>The discipline of point-in-time matters more than the size. A back-test that uses today&rsquo;s knowledge of which companies still exist is a back-test that lies. The lake is structured so that every query, on every date, returns only what was knowable on that date.</p>
-          <p>Ingestion runs daily after market close. Reconciliation against multiple feeds catches discrepancies before they reach research. <strong>The firm has rejected back-tests in the past because a single field couldn&rsquo;t be sourced cleanly.</strong> The data is the substrate. Compromising on the substrate compromises everything above it.</p>
+          <p>Quantitative work hits a data-quality bottleneck long before it hits an idea bottleneck. The data lake is our answer to it. It holds tick-level price data for the Indian universe since 2018, point-in-time fundamentals back further, corporate actions, filings, regulatory disclosures, and news. <em>Everything is survivorship-clean.</em> Everything is point-in-time.</p>
+          <p>The point-in-time discipline matters more than the size. A back-test that uses today&rsquo;s knowledge of which companies still exist is a back-test that lies. The lake is built so that every query, on every date, returns only what was knowable on that date.</p>
+          <p>Ingestion runs daily after market close. Reconciliation against multiple feeds catches discrepancies before they reach research. <strong>We have rejected back-tests because a single field couldn&rsquo;t be sourced cleanly.</strong> The data is the substrate. Compromise it and you compromise everything above it.</p>
         </div>
         <div class="specs">
           <div class="sp"><span class="lh">STORAGE</span><span class="rh">Postgres for reference and corporate-action data. <em>ClickHouse</em> for tick and high-cardinality time-series.</span></div>
@@ -416,8 +416,8 @@
           <div class="stats"><div><em>~100</em>ideas per year</div><div><em>~2</em>survive to live</div></div>
         </div>
         <div class="body">
-          <p>QX is the research stack: notebooks, a factor library, a back-test framework, walk-forward and regime-test tooling, paper-trading scaffolding, and the connective tissue that ties them to the data lake on one side and to FIST on the other.</p>
-          <p>The point of QX is not to enable cleverness &mdash; the standard tools allow that fine. <em>The point is to enforce honesty.</em> Back-tests in QX cannot quietly use look-ahead data; the framework prevents it. Walk-forward windows are pre-registered before code runs. Paper-trade results are recorded for every candidate strategy, whether it survives or not. The history of every dead idea is preserved alongside the history of every live one.</p>
+          <p>QX is the research stack: notebooks, a factor library, a back-test framework, walk-forward and regime-test tooling, paper-trading scaffolding, and the connective tissue that ties them to the data lake on one side and FIST on the other.</p>
+          <p>The point of QX is not to enable cleverness &mdash; standard tools do that fine. <em>The point is to enforce honesty.</em> Back-tests in QX cannot quietly use look-ahead data; the framework blocks it. Walk-forward windows are pre-registered before code runs. Paper-trade results are recorded for every candidate, survivor or not. The history of every dead idea is kept alongside every live one.</p>
           <p>QX is what makes the funnel in <a href="flameback-strategy-rd.html" style="color:var(--accent);text-decoration:underline">Strategy R&amp;D</a> possible. Without it, the funnel would be a slogan.</p>
         </div>
         <div class="specs">
@@ -439,9 +439,9 @@
           <div class="stats"><div><em>2024</em>built</div><div><em>~40%</em>routine-ops time saved</div></div>
         </div>
         <div class="body">
-          <p>Jarvis is the newest component. It is the LLM-backed agent layer that sits above FIST, QX, and the data lake &mdash; the surface the team uses to operate the firm without drowning in keystrokes. Client onboarding documents, KYC follow-ups, draft research notes, monthly client commentary, compliance log summaries, regulatory filings, internal meeting minutes, response drafts &mdash; all the work that is necessary but not differentiating.</p>
-          <p>The principle is narrow: <em>Jarvis does not make investment decisions.</em> It does not trade. It does not recommend. It writes drafts, summarises, formats, and routes. Every artefact it produces is reviewed by a human before it leaves the firm. The leverage is in the keystrokes saved, not in the judgments outsourced.</p>
-          <p>This sounds modest. It compounds. <strong>The team has roughly forty percent more attention available for the work that actually matters &mdash; research, client relationships, risk &mdash; than it did before Jarvis existed.</strong></p>
+          <p>Jarvis is the newest component &mdash; the LLM-backed agent layer that sits above FIST, QX, and the data lake. It&rsquo;s the surface the team uses to run the firm without drowning in keystrokes: onboarding documents, KYC follow-ups, draft research notes, monthly client commentary, compliance log summaries, regulatory filings, meeting minutes, response drafts &mdash; the work that is necessary but not differentiating.</p>
+          <p>The principle is narrow: <em>Jarvis does not make investment decisions.</em> It does not trade. It does not recommend. It drafts, summarises, formats, and routes. A human reviews everything it produces before it leaves the firm. The leverage is in keystrokes saved, not judgement outsourced.</p>
+          <p>This sounds modest. It compounds. <strong>The team has roughly forty percent more attention for the work that actually matters &mdash; research, client relationships, risk &mdash; than it did before Jarvis existed.</strong></p>
         </div>
         <div class="specs">
           <div class="sp"><span class="lh">MODEL</span><span class="rh">Best-available frontier model via API. <em>Provider-agnostic abstraction</em> so the firm can swap as models improve.</span></div>
@@ -464,7 +464,7 @@
       <div class="prose-grid" style="margin-bottom:34px">
         <div class="meta lab"><span class="n">a.</span>How to read the table</div>
         <div class="prose">
-          <p>The left column is the four written layers plus the smaller pieces of software we built around them. The right column is everything we buy, rent, or partner for. The rule the founders set in 2017 was simple: <em>build the parts where edge lives, buy the parts where it doesn&rsquo;t.</em> The table below is the eight-year-old answer to that question.</p>
+          <p>The left column is the four written layers plus the smaller pieces we built around them. The right column is everything we buy, rent, or partner for. The rule the founders set in 2017 was simple: <em>build the parts where edge lives, buy the parts where it doesn&rsquo;t.</em> The table below is the eight-year-old answer.</p>
         </div>
       </div>
 
@@ -516,8 +516,8 @@
       <div class="prose-grid" style="margin-bottom:34px">
         <div class="meta lab"><span class="n">a.</span>Weekly operations</div>
         <div class="prose">
-          <p>The most fragile thing about a quantitative system is not the algorithm. It is the part of the operation that runs at three in the morning on a Saturday, without supervision, and must work. The list below is a representative Saturday at the firm. <em>It is what happens whether or not anyone shows up.</em></p>
-          <p>None of it is glamorous. All of it is mandatory. <strong>Software that does not run reliably on Saturday at 3am cannot be trusted with client capital on Tuesday at 10am.</strong></p>
+          <p>The most fragile thing about a quantitative system is not the algorithm. It is the part of the operation that runs at three in the morning on a Saturday, unsupervised, and has to work. The list below is a representative Saturday at the firm. <em>It is what happens whether or not anyone shows up.</em></p>
+          <p>None of it is glamorous. All of it is mandatory. <strong>Software that doesn&rsquo;t run reliably on Saturday at 3am can&rsquo;t be trusted with client capital on Tuesday at 10am.</strong></p>
         </div>
       </div>
 
@@ -551,7 +551,7 @@
         <div class="meta lab"><span class="n">a.</span>What is &mdash; and isn&rsquo;t &mdash; open</div>
         <div class="prose">
           <p>The live strategies are not open. They are our edge. The infrastructure around them &mdash; data utilities, a backtest kernel, factor toolkits &mdash; is gradually being published. <em>Work we did once, so the next person doesn&rsquo;t have to.</em></p>
-          <p>None of these projects is a marketing artefact. They are libraries we use internally, refactored carefully enough to be readable by someone outside the firm. Pull requests are reviewed by the same engineers who use them in production.</p>
+          <p>None of these projects is a marketing artefact. They are libraries we use internally, cleaned up enough to be readable by someone outside the firm. Pull requests are reviewed by the same engineers who use them in production.</p>
         </div>
       </div>
 
@@ -566,9 +566,9 @@
   <!-- Cross links -->
   <section class="xlinks">
     <div class="wrap">
-      <div class="xl-h"><h2>Read into the <em>other sections.</em></h2><p>Technology is one of five Who-we-are sub-pages. Each goes one layer deeper than the overview.</p></div>
+      <div class="xl-h"><h2>Read into the <em>other sections.</em></h2><p>Technology is one of five Who-we-are pages. Each goes one layer deeper than the overview.</p></div>
       <div class="xl-grid">
-        <a class="xl-card" href="flameback-firm.html"><span class="n">i.</span><span class="t">The <em>firm.</em></span><span class="d">Origin, raison d&rsquo;&ecirc;tre, capital, mise en place, finite vs infinite games.</span><span class="arr">Read &rarr;</span></a>
+        <a class="xl-card" href="flameback-firm.html"><span class="n">i.</span><span class="t">The <em>firm.</em></span><span class="d">Origin, the reason the firm exists, capital, everything in its place, finite vs infinite games.</span><span class="arr">Read &rarr;</span></a>
         <a class="xl-card" href="flameback-team.html"><span class="n">ii.</span><span class="t">The <em>team.</em></span><span class="d">Fifteen people in Bangalore. Leadership, structure, hiring funnel, values.</span><span class="arr">Read &rarr;</span></a>
         <a class="xl-card" href="flameback-philosophy.html"><span class="n">iii.</span><span class="t"><em>Philosophy.</em></span><span class="d">Five tenets, four schools, the reading list, the disciplined refusals.</span><span class="arr">Read &rarr;</span></a>
         <a class="xl-card" href="flameback-strategy-rd.html"><span class="n">iv.</span><span class="t">Strategy <em>R&amp;D.</em></span><span class="d">The five-stage funnel from a hundred ideas to two live strategies.</span><span class="arr">Read &rarr;</span></a>
@@ -579,7 +579,7 @@
   <section class="close">
     <div class="wrap">
       <h2>If you&rsquo;d like to see <em>what the system produces.</em></h2>
-      <p class="sub">The Our Work page lists the live strategies running on this stack, their methodology, and their track records &mdash; drawdowns included. None of them is a marketed product. All of them run with founders&rsquo; capital alongside client capital.</p>
+      <p class="sub">The Our Work page lists the live strategies running on this stack, their methodology, and their track records &mdash; drawdowns included. None of them is a marketed product. All run with founders&rsquo; capital alongside client capital.</p>
       <div class="ct-row">
         <a class="btn" href="flameback-our-work.html">See Our Work &rarr;</a>
         <a class="btn-out" href="flameback-app-splash.html">Schedule a conversation</a>
