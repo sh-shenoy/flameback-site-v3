@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>flameback. — Chapter 2: What you want</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#1A1714; --ink:#F2EDE3; --ink-soft:rgba(242,237,227,.64); --ink-mute:rgba(242,237,227,.42);
@@ -26,7 +26,7 @@
   section,nav,main{position:relative;z-index:2}
   .wm{font-family:"Newsreader",serif;font-weight:600;font-size:18px;color:var(--ink);text-decoration:none}
   .wm .p{color:var(--accent)}
-  h1,h2,h3,h4{font-family:"Fraunces",serif;font-weight:500;letter-spacing:-.012em;color:var(--ink)}
+  h1,h2,h3,h4{font-family:"Spectral",serif;font-weight:500;letter-spacing:-.012em;color:var(--ink)}
 
   nav{padding:14px 0;border-bottom:1px solid var(--line)}
   .navin{display:flex;align-items:center;justify-content:space-between;padding:0 clamp(22px,3vw,32px)}
@@ -52,7 +52,7 @@
 
   /* Chapter header */
   .ch-lab{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-  .ch-lab .num{font-family:"Fraunces",serif;font-style:italic;color:var(--accent);font-size:18px}
+  .ch-lab .num{font-family:"Spectral",serif;font-style:italic;color:var(--accent);font-size:18px}
   .ch-lab .lab{font-style:italic;font-size:13px;color:var(--ink-mute);letter-spacing:.04em}
 
   h1{font-size:clamp(32px,4.6vw,48px);line-height:1.02;letter-spacing:-.018em;margin-bottom:12px;max-width:22ch}
@@ -81,14 +81,14 @@
   .panel{padding:24px;border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 2%,transparent);display:flex;flex-direction:column;gap:24px}
   .ctrl label{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
   .ctrl .lab-l{font-size:11px;color:var(--ink-mute);font-style:italic;letter-spacing:.05em;text-transform:uppercase}
-  .ctrl .lab-v{font-family:"Fraunces",serif;font-style:italic;color:var(--accent);font-size:20px;line-height:1}
+  .ctrl .lab-v{font-family:"Spectral",serif;font-style:italic;color:var(--accent);font-size:20px;line-height:1}
   .ctrl input[type=range]{width:100%;accent-color:var(--accent);height:2px;background:var(--line);margin-bottom:5px}
   .ctrl .rng{display:flex;justify-content:space-between;font-size:10.5px;color:var(--ink-mute);font-style:italic;letter-spacing:.02em}
 
   /* Chart panel */
   .chart-wrap{border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 2%,transparent);padding:24px;display:flex;flex-direction:column;gap:14px}
   .chart-wrap .ch-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;flex-wrap:wrap;gap:10px}
-  .ch-head .h-t{font-family:"Fraunces",serif;font-style:italic;font-size:19px;color:var(--ink)}
+  .ch-head .h-t{font-family:"Spectral",serif;font-style:italic;font-size:19px;color:var(--ink)}
   .ch-head .h-d{font-size:11px;color:var(--ink-mute);font-style:italic;letter-spacing:.04em}
   .chart-svg-wrap{width:100%;overflow-x:auto}
   svg.chart{display:block;width:100%;min-width:560px;height:auto}
@@ -108,7 +108,7 @@
   .res-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:10px}
   .res-h .l{font-style:italic;font-size:11px;color:var(--ink-mute);letter-spacing:.05em;text-transform:uppercase}
   .res-h .r{font-family:"Newsreader",monospace;font-size:11px;color:var(--ink-mute)}
-  .res-v{font-family:"Fraunces",serif;font-style:italic;font-size:28px;color:var(--ink);line-height:1;letter-spacing:-.01em}
+  .res-v{font-family:"Spectral",serif;font-style:italic;font-size:28px;color:var(--ink);line-height:1;letter-spacing:-.01em}
   .res-v.acc{color:var(--accent)}
   .res-d{font-size:11.5px;color:var(--ink-soft);font-style:italic;margin-top:6px;line-height:1.5}
   .res-tag{display:inline-block;font-size:9.5px;color:var(--accent);font-style:italic;text-transform:uppercase;letter-spacing:.08em;margin-top:8px;padding:2px 6px;border:1px solid color-mix(in srgb,var(--accent) 50%,transparent)}
@@ -125,7 +125,7 @@
   .mix-card.rec{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 4%,transparent)}
   .mix-card.rec::before{content:"Recommended";position:absolute;top:-9px;left:18px;background:var(--accent);color:var(--btn-ink);padding:2px 9px;font-size:10px;letter-spacing:.05em;text-transform:uppercase;font-style:italic;font-family:"Newsreader",serif}
   .mc-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
-  .mc-head .name{font-family:"Fraunces",serif;font-style:italic;font-size:20px;color:var(--ink)}
+  .mc-head .name{font-family:"Spectral",serif;font-style:italic;font-size:20px;color:var(--ink)}
   .mc-head .rate{font-family:"Newsreader",monospace;font-size:13px;color:var(--accent)}
   .mc-d{font-size:13px;line-height:1.5;color:var(--ink-soft);margin-bottom:16px;min-height:60px}
   .mc-alloc{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}

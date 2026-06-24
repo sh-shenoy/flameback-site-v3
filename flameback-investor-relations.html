@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>flameback — Investor Relations</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#1A1714;--ink:#F2EDE3;--ink-soft:rgba(242,237,227,.66);--ink-mute:rgba(242,237,227,.44);--line:rgba(242,237,227,.16);--accent:#D2682F;--btn-bg:#D2682F;--btn-ink:#1A1714;--grain-blend:screen;--grain-op:.055;--card:rgba(242,237,227,.03)}
   :root.light{--bg:#F6F1E8;--ink:#1A1714;--ink-soft:rgba(26,23,20,.68);--ink-mute:rgba(26,23,20,.46);--line:rgba(26,23,20,.14);--accent:#A65232;--btn-bg:#1A1714;--btn-ink:#F6F1E8;--grain-blend:multiply;--grain-op:.035;--card:rgba(26,23,20,.025)}
@@ -13,7 +13,7 @@
   html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
   body{background:var(--bg);color:var(--ink);font-family:"Newsreader",serif;transition:background .5s,color .5s;line-height:1.55;font-variant-numeric:tabular-nums;min-height:100vh;display:flex;flex-direction:column}
   body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;mix-blend-mode:var(--grain-blend);opacity:var(--grain-op);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  h1,h2,h3,h4{font-family:"Fraunces",serif;font-weight:500;letter-spacing:-.014em;line-height:1.04}
+  h1,h2,h3,h4{font-family:"Spectral",serif;font-weight:500;letter-spacing:-.014em;line-height:1.04}
   h1 em,h2 em,h3 em{color:var(--accent);font-style:italic;font-weight:500}
   .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(22px,5vw,44px)}
 
@@ -67,7 +67,7 @@
   table.ir{width:100%;border-collapse:collapse;border:1px solid var(--line);min-width:520px}
   table.ir th,table.ir td{border:1px solid var(--line);padding:11px 12px;text-align:left;font-size:13px;vertical-align:middle}
   table.ir th{font-family:"Newsreader",monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mute);font-weight:400;background:var(--card)}
-  table.ir td.fy{font-family:"Fraunces",serif;font-style:italic;font-size:18px;color:var(--ink);white-space:nowrap}
+  table.ir td.fy{font-family:"Spectral",serif;font-style:italic;font-size:18px;color:var(--ink);white-space:nowrap}
   .dl{display:inline-flex;align-items:center;gap:6px;font-family:"Newsreader",serif;font-size:12.5px;color:var(--accent);text-decoration:none;border:1px solid color-mix(in srgb,var(--accent) 40%,var(--line));padding:5px 11px;border-radius:999px;transition:all .2s;white-space:nowrap}
   .dl:hover{background:var(--accent);color:var(--btn-ink);border-color:var(--accent)}
   .dl.muted{color:var(--ink-mute);border-color:var(--line);pointer-events:none;opacity:.5}
@@ -75,11 +75,11 @@
   .twolink a{font-family:"Newsreader",serif;font-size:12px;color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 35%,transparent)}
   .twolink a:hover{color:var(--ink)}
   .opp{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border:1px solid var(--line);border-left:2px solid var(--accent);background:var(--card);padding:18px 20px}
-  .opp .ot{font-family:"Fraunces",serif;font-style:italic;font-size:21px;color:var(--ink)}
+  .opp .ot{font-family:"Spectral",serif;font-style:italic;font-size:21px;color:var(--ink)}
   .opp .od{font-size:12.5px;color:var(--ink-soft);margin-top:3px}
   .yearlist{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line)}
   .yearrow{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--bg);padding:14px 18px}
-  .yearrow .fy{font-family:"Fraunces",serif;font-style:italic;font-size:19px}
+  .yearrow .fy{font-family:"Spectral",serif;font-style:italic;font-size:19px}
 
   /* v3 — softer, human structure */
   .btn,.btn-out,.cta,.selbtn,.gbtn,.confirm,.authbtn,.rebtn,.startcta,.viewstrat,.proceed,.da-fill,.da-out,.act-fill,.act-out,.act-skip,.know,.snooze{border-radius:9px}

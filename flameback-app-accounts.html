@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>flameback — Your accounts</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#1A1714;--ink:#F2EDE3;--ink-soft:rgba(242,237,227,.66);--ink-mute:rgba(242,237,227,.44);--line:rgba(242,237,227,.16);--accent:#D2682F;--btn-bg:#D2682F;--btn-ink:#1A1714;--grain-blend:screen;--grain-op:.055;--card:rgba(242,237,227,.03)}
   :root.light{--bg:#F6F1E8;--ink:#1A1714;--ink-soft:rgba(26,23,20,.68);--ink-mute:rgba(26,23,20,.46);--line:rgba(26,23,20,.14);--accent:#A65232;--btn-bg:#1A1714;--btn-ink:#F6F1E8;--grain-blend:multiply;--grain-op:.035;--card:rgba(26,23,20,.03)}
@@ -13,7 +13,7 @@
   html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
   body{background:var(--bg);color:var(--ink);font-family:"Newsreader",serif;transition:background .5s,color .5s;line-height:1.55;font-variant-numeric:tabular-nums;min-height:100vh;display:flex;flex-direction:column}
   body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;mix-blend-mode:var(--grain-blend);opacity:var(--grain-op);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  h1,h2,h3,h4{font-family:"Fraunces",serif;font-weight:500;letter-spacing:-.014em;line-height:1.04}
+  h1,h2,h3,h4{font-family:"Spectral",serif;font-weight:500;letter-spacing:-.014em;line-height:1.04}
   h1 em,h2 em,h3 em{color:var(--accent);font-style:italic;font-weight:500}
   .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(22px,5vw,44px)}
 
@@ -59,19 +59,19 @@
   .acct{border:1px solid var(--line);background:var(--card);padding:20px;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:14px;transition:border-color .25s,transform .15s}
   .acct:hover{border-color:var(--accent);transform:translateY(-2px)}
   .acct .top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
-  .acct .nm{font-family:"Fraunces",serif;font-style:italic;font-size:24px;line-height:1.05}
+  .acct .nm{font-family:"Spectral",serif;font-style:italic;font-size:24px;line-height:1.05}
   .acct .rel{font-family:"Newsreader",monospace;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mute);margin-top:4px}
   .chiprow{display:flex;gap:7px;flex-wrap:wrap}
   .pill{font-family:"Newsreader",monospace;font-size:9px;letter-spacing:.05em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px solid var(--line);color:var(--ink-soft)}
   .pill.prod{border-color:color-mix(in srgb,var(--accent) 45%,transparent);color:var(--accent)}
   .acct .val{display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:13px}
-  .acct .val .v{font-family:"Fraunces",serif;font-size:24px}
+  .acct .val .v{font-family:"Spectral",serif;font-size:24px}
   .acct .val .st{font-family:"Newsreader",monospace;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-mute)}
   .acct .val .st.live{color:var(--accent)}
   .acct .enter{font-size:13px;font-style:italic;color:var(--accent)}
   .addacct{border:1px dashed color-mix(in srgb,var(--accent) 50%,var(--line));background:transparent;color:var(--ink);display:flex;align-items:center;justify-content:center;gap:10px;min-height:150px;cursor:pointer;font-family:"Newsreader",serif;font-size:15px;transition:border-color .2s,background .2s}
   .addacct:hover{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 5%,transparent)}
-  .addacct .pl{font-family:"Fraunces",serif;font-style:italic;font-size:26px;color:var(--accent)}
+  .addacct .pl{font-family:"Spectral",serif;font-style:italic;font-size:26px;color:var(--accent)}
 
   /* add-account modal */
   .scrim{position:fixed;inset:0;z-index:100;background:rgba(10,8,6,.62);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px}
