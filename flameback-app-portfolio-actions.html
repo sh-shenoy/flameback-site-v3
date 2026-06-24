@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>flameback. — Name your portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#1A1714;--ink:#F2EDE3;--ink-soft:rgba(242,237,227,.66);--ink-mute:rgba(242,237,227,.44);--line:rgba(242,237,227,.16);--accent:#D2682F;--btn-bg:#D2682F;--btn-ink:#1A1714;--grain-blend:screen;--grain-op:.055;--card:rgba(242,237,227,.03)}
   :root.light{--bg:#F6F1E8;--ink:#1A1714;--ink-soft:rgba(26,23,20,.68);--ink-mute:rgba(26,23,20,.46);--line:rgba(26,23,20,.14);--accent:#A65232;--btn-bg:#1A1714;--btn-ink:#F6F1E8;--grain-blend:multiply;--grain-op:.035;--card:rgba(26,23,20,.025)}
@@ -13,7 +13,7 @@
   html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
   body{background:var(--bg);color:var(--ink);font-family:"Newsreader",serif;transition:background .5s,color .5s;line-height:1.55;font-variant-numeric:tabular-nums;min-height:100vh;display:flex;flex-direction:column}
   body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;mix-blend-mode:var(--grain-blend);opacity:var(--grain-op);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  h1,h2,h3,h4{font-family:"Spectral",serif;font-weight:500;letter-spacing:-.014em;line-height:1.04}
+  h1,h2,h3,h4{font-family:"Bitter",serif;font-weight:500;letter-spacing:-.014em;line-height:1.04}
   h1 em,h2 em,h3 em{color:var(--accent);font-style:italic;font-weight:500}
   .mono{font-family:"Newsreader",monospace;letter-spacing:.07em;text-transform:uppercase}
   .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(22px,5vw,44px)}
@@ -58,13 +58,13 @@
   /* the strategy being named — context card */
   .ctxt{border:1px solid var(--line);background:var(--card);padding:14px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}
   .ctxt .k{font-family:"Newsreader",monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:4px}
-  .ctxt .v{font-family:"Spectral",serif;font-style:italic;font-size:19px;color:var(--ink);line-height:1.1}
+  .ctxt .v{font-family:"Bitter",serif;font-style:italic;font-size:19px;color:var(--ink);line-height:1.1}
   .ctxt .amt{text-align:right}
   .ctxt .amt .v{color:var(--accent)}
 
   /* name input */
   .field{position:relative;margin-bottom:10px}
-  .field input{width:100%;background:none;border:none;border-bottom:1.5px solid var(--line);color:var(--ink);font-family:"Spectral",serif;font-size:30px;padding:10px 0 12px;outline:none;transition:border-color .3s;line-height:1.1}
+  .field input{width:100%;background:none;border:none;border-bottom:1.5px solid var(--line);color:var(--ink);font-family:"Bitter",serif;font-size:30px;padding:10px 0 12px;outline:none;transition:border-color .3s;line-height:1.1}
   .field input::placeholder{color:var(--ink-mute);font-style:italic;font-size:26px}
   .field input:focus{border-bottom-color:var(--accent)}
   .field .count{position:absolute;right:0;bottom:14px;font-family:"Newsreader",monospace;font-size:10px;color:var(--ink-mute);opacity:0;transition:opacity .3s}

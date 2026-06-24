@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>flameback. — Portfolio Doctor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#1A1714; --ink:#F2EDE3; --ink-soft:rgba(242,237,227,.64); --ink-mute:rgba(242,237,227,.42);
@@ -29,7 +29,7 @@
   .wm .p{color:var(--accent)}
   .lab{font-family:"Newsreader",serif;font-style:italic;font-size:14px;color:var(--ink-mute)}
   .lab .n{font-style:normal;color:var(--accent);margin-right:10px}
-  h1,h2,h3,h4{font-family:"Spectral",serif;font-weight:500;letter-spacing:-.012em;color:var(--ink)}
+  h1,h2,h3,h4{font-family:"Bitter",serif;font-weight:500;letter-spacing:-.012em;color:var(--ink)}
   .btn,.btn-out{display:inline-flex;align-items:center;gap:11px;font-family:"Newsreader",serif;font-size:15px;font-weight:500;padding:12px 22px;text-decoration:none;transition:gap .35s,opacity .3s,border-color .3s;cursor:pointer;border:none}
   .btn{background:var(--btn-bg);color:var(--btn-ink)}.btn:hover{gap:15px;opacity:.92}
   .btn-out{background:transparent;color:var(--ink);border:1px solid var(--line)}.btn-out:hover{gap:15px;border-color:var(--ink-mute)}
@@ -84,7 +84,7 @@
 
   .step{padding:18px 18px 20px;border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 2%,transparent);display:flex;flex-direction:column;gap:12px;transition:border-color .3s,transform .3s}
   .step:hover{border-color:var(--accent)}
-  .step-num{font-family:"Spectral",serif;font-style:italic;color:var(--accent);font-size:14px;letter-spacing:.04em}
+  .step-num{font-family:"Bitter",serif;font-style:italic;color:var(--accent);font-size:14px;letter-spacing:.04em}
   .step-mock{aspect-ratio:5/3;border:1px solid var(--line);background:var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
   .step-mock svg{display:block;width:100%;height:100%}
   .step h4{font-size:18px;line-height:1.2}
@@ -102,7 +102,7 @@
   .in-opt:hover{border-color:var(--accent)}
   .in-opt.active{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 4%,transparent)}
   .in-opt-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-  .in-opt-head .ic{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:"Spectral",serif;font-style:italic;font-size:16px}
+  .in-opt-head .ic{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:"Bitter",serif;font-style:italic;font-size:16px}
   .in-opt.active .in-opt-head .ic{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,transparent)}
   .in-opt-head .pill{font-style:italic;font-size:10px;color:var(--ink-mute);padding:2px 9px;border:1px solid var(--line);letter-spacing:.06em;text-transform:uppercase}
   .in-opt.active .in-opt-head .pill{color:var(--accent);border-color:var(--accent)}
@@ -118,7 +118,7 @@
   .quiz-pnl-head .progress .acc{color:var(--accent);font-style:normal;font-weight:500}
   .q-show{padding:8px 0 16px}
   .q-show .q-lab{font-style:italic;font-size:10.5px;color:var(--ink-mute);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:8px}
-  .q-show .q-text{font-family:"Spectral",serif;font-size:20px;line-height:1.2;margin-bottom:14px;display:block}
+  .q-show .q-text{font-family:"Bitter",serif;font-size:20px;line-height:1.2;margin-bottom:14px;display:block}
   .q-show .q-opts{display:flex;gap:8px;flex-wrap:wrap}
   .q-show .q-opt{padding:9px 16px;border:1px solid var(--line);font-family:"Newsreader",serif;font-size:13.5px;color:var(--ink-soft);background:transparent;cursor:pointer;transition:all .25s}
   .q-show .q-opt:hover{border-color:var(--ink-mute);color:var(--ink)}
@@ -134,7 +134,7 @@
 
   /* Tab system */
   .tabs{display:flex;border-bottom:1px solid var(--line);margin-bottom:28px;gap:0}
-  .tab{padding:12px 24px;font-family:"Spectral",serif;font-style:italic;font-size:18px;color:var(--ink-mute);background:transparent;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:color .25s,border-color .25s;margin-bottom:-1px}
+  .tab{padding:12px 24px;font-family:"Bitter",serif;font-style:italic;font-size:18px;color:var(--ink-mute);background:transparent;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:color .25s,border-color .25s;margin-bottom:-1px}
   .tab:hover{color:var(--ink)}
   .tab.active{color:var(--accent);border-bottom-color:var(--accent)}
   .tab-pane{display:none}
@@ -144,7 +144,7 @@
   .score-row{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;padding:clamp(20px,3vw,30px);border:1px solid var(--line);background:color-mix(in srgb,var(--accent) 3%,transparent);margin-bottom:28px}
   @media(max-width:760px){.score-row{grid-template-columns:1fr}}
   .score-circle{width:128px;height:128px;border:2px solid var(--accent);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bg);position:relative}
-  .score-circle .v{font-family:"Spectral",serif;font-style:italic;font-size:48px;color:var(--accent);line-height:1}
+  .score-circle .v{font-family:"Bitter",serif;font-style:italic;font-size:48px;color:var(--accent);line-height:1}
   .score-circle .o{font-style:italic;font-size:11px;color:var(--ink-mute);margin-top:2px}
   .score-text h3{font-size:22px;margin-bottom:8px;line-height:1.15}
   .score-text p{font-size:14px;line-height:1.6;color:var(--ink-soft);max-width:60ch}
@@ -185,7 +185,7 @@
   @media(max-width:760px){.factor-grid{grid-template-columns:repeat(2,1fr)}}
   .factor{padding:14px 16px;border:1px solid var(--line);background:color-mix(in srgb,var(--ink) 2%,transparent)}
   .factor-l{font-style:italic;font-size:10.5px;color:var(--ink-mute);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;display:block}
-  .factor-v{font-family:"Spectral",serif;font-style:italic;font-size:22px;color:var(--ink);line-height:1;margin-bottom:8px;display:block}
+  .factor-v{font-family:"Bitter",serif;font-style:italic;font-size:22px;color:var(--ink);line-height:1;margin-bottom:8px;display:block}
   .factor-v.acc{color:var(--accent)}
   .factor-bar{height:4px;background:var(--line);overflow:hidden}
   .factor-bar .fill{height:100%;background:var(--accent)}
@@ -231,9 +231,9 @@
   .vol-prof-l{position:absolute;left:0;right:0;top:0;display:flex;font-size:10px;color:var(--ink-mute);font-style:italic}
   .vol-prof-l span{flex:1;text-align:center;letter-spacing:.04em}
   .vol-marker{position:absolute;top:14px;left:42%;width:2px;height:52px;background:var(--accent)}
-  .vol-marker::after{content:"actual: 16.4%";position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-family:"Spectral",serif;font-style:italic;font-size:12px;color:var(--accent);white-space:nowrap}
+  .vol-marker::after{content:"actual: 16.4%";position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-family:"Bitter",serif;font-style:italic;font-size:12px;color:var(--accent);white-space:nowrap}
   .vol-user{position:absolute;top:14px;left:25%;width:2px;height:52px;background:var(--ink-mute)}
-  .vol-user::after{content:"user profile: 11%";position:absolute;top:64px;left:50%;transform:translateX(-50%);font-family:"Spectral",serif;font-style:italic;font-size:11px;color:var(--ink-mute);white-space:nowrap}
+  .vol-user::after{content:"user profile: 11%";position:absolute;top:64px;left:50%;transform:translateX(-50%);font-family:"Bitter",serif;font-style:italic;font-size:11px;color:var(--ink-mute);white-space:nowrap}
 
   /* MF tile row */
   .mf-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
@@ -242,7 +242,7 @@
   .mf-t::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px}
   .mf-t.bad::before{background:var(--bad)} .mf-t.warn::before{background:var(--warn)} .mf-t.good::before{background:var(--good)}
   .mf-t-l{font-style:italic;font-size:10.5px;color:var(--ink-mute);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:8px}
-  .mf-t-v{font-family:"Spectral",serif;font-style:italic;font-size:30px;line-height:1;margin-bottom:6px;color:var(--ink)}
+  .mf-t-v{font-family:"Bitter",serif;font-style:italic;font-size:30px;line-height:1;margin-bottom:6px;color:var(--ink)}
   .mf-t-v.bad{color:var(--bad)} .mf-t-v.warn{color:var(--warn)} .mf-t-v.good{color:var(--good)}
   .mf-t-d{font-size:12.5px;color:var(--ink-soft);line-height:1.5}
 
@@ -263,7 +263,7 @@
   .recos h3{font-size:22px;margin-bottom:14px}
   .reco{display:flex;gap:18px;padding:14px 0;border-top:1px solid var(--line);align-items:flex-start}
   .reco:first-of-type{border-top:none}
-  .reco-mark{font-family:"Spectral",serif;font-style:italic;font-size:20px;color:var(--accent);line-height:1;flex-shrink:0;width:24px}
+  .reco-mark{font-family:"Bitter",serif;font-style:italic;font-size:20px;color:var(--accent);line-height:1;flex-shrink:0;width:24px}
   .reco-body p{font-size:14px;line-height:1.6;color:var(--ink)}
   .reco-body p strong{font-weight:500}
 
@@ -390,7 +390,7 @@
             <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
               <rect width="260" height="160" fill="var(--bg)"/>
               <rect x="60" y="30" width="140" height="100" fill="none" stroke="var(--line)" stroke-width="1"/>
-              <text x="130" y="48" font-size="9" font-family="Spectral" font-style="italic" fill="var(--ink-mute)" text-anchor="middle" letter-spacing="0.5">SIGN IN</text>
+              <text x="130" y="48" font-size="9" font-family="Bitter" font-style="italic" fill="var(--ink-mute)" text-anchor="middle" letter-spacing="0.5">SIGN IN</text>
               <line x1="74" y1="58" x2="186" y2="58" stroke="var(--line)" stroke-width="0.5"/>
               <text x="74" y="74" font-size="7" font-family="Newsreader" font-style="italic" fill="var(--ink-mute)" letter-spacing="0.3">EMAIL</text>
               <rect x="74" y="78" width="112" height="14" fill="none" stroke="var(--line)" stroke-width="0.6"/>
@@ -412,11 +412,11 @@
           <div class="step-mock">
             <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
               <rect width="260" height="160" fill="var(--bg)"/>
-              <text x="130" y="22" font-size="8" font-family="Spectral" font-style="italic" fill="var(--ink-mute)" text-anchor="middle" letter-spacing="0.5">CHOOSE INPUT</text>
+              <text x="130" y="22" font-size="8" font-family="Bitter" font-style="italic" fill="var(--ink-mute)" text-anchor="middle" letter-spacing="0.5">CHOOSE INPUT</text>
               <rect x="14" y="34" width="72" height="108" fill="none" stroke="var(--line)" stroke-width="1"/>
               <circle cx="50" cy="64" r="11" fill="none" stroke="var(--accent)" stroke-width="1"/>
               <path d="M 45,60 L 50,68 L 56,58" stroke="var(--accent)" stroke-width="1.2" fill="none"/>
-              <text x="50" y="92" font-size="7.5" font-family="Spectral" font-style="italic" fill="var(--ink)" text-anchor="middle">Screenshot</text>
+              <text x="50" y="92" font-size="7.5" font-family="Bitter" font-style="italic" fill="var(--ink)" text-anchor="middle">Screenshot</text>
               <text x="50" y="106" font-size="6" font-family="Newsreader" font-style="italic" fill="var(--ink-mute)" text-anchor="middle">PNG, JPG</text>
               <text x="50" y="124" font-size="6" font-family="Newsreader" font-style="italic" fill="var(--ink-mute)" text-anchor="middle">OCR extracts</text>
               <rect x="94" y="34" width="72" height="108" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
@@ -424,14 +424,14 @@
               <line x1="124" y1="60" x2="138" y2="60" stroke="var(--accent)" stroke-width="0.7"/>
               <line x1="124" y1="66" x2="138" y2="66" stroke="var(--accent)" stroke-width="0.7"/>
               <line x1="124" y1="72" x2="138" y2="72" stroke="var(--accent)" stroke-width="0.7"/>
-              <text x="130" y="98" font-size="7.5" font-family="Spectral" font-style="italic" fill="var(--accent)" text-anchor="middle">CSV / Excel</text>
+              <text x="130" y="98" font-size="7.5" font-family="Bitter" font-style="italic" fill="var(--accent)" text-anchor="middle">CSV / Excel</text>
               <text x="130" y="112" font-size="6" font-family="Newsreader" font-style="italic" fill="var(--ink-mute)" text-anchor="middle">Template ready</text>
               <text x="130" y="128" font-size="6" font-family="Newsreader" font-style="italic" fill="var(--accent)" text-anchor="middle">Drag &amp; drop</text>
               <rect x="174" y="34" width="72" height="108" fill="none" stroke="var(--line)" stroke-width="1"/>
               <circle cx="210" cy="62" r="6" fill="none" stroke="var(--ink-mute)" stroke-width="1"/>
               <circle cx="210" cy="74" r="6" fill="none" stroke="var(--ink-mute)" stroke-width="1"/>
               <line x1="210" y1="68" x2="210" y2="68" stroke="var(--ink-mute)" stroke-width="0.6"/>
-              <text x="210" y="98" font-size="7.5" font-family="Spectral" font-style="italic" fill="var(--ink)" text-anchor="middle">Account Agg.</text>
+              <text x="210" y="98" font-size="7.5" font-family="Bitter" font-style="italic" fill="var(--ink)" text-anchor="middle">Account Agg.</text>
               <text x="210" y="112" font-size="6" font-family="Newsreader" font-style="italic" fill="var(--ink-mute)" text-anchor="middle">SEBI consent</text>
               <text x="210" y="128" font-size="6" font-family="Newsreader" font-style="italic" fill="var(--ink-mute)" text-anchor="middle">Auto-refresh</text>
             </svg>
@@ -450,9 +450,9 @@
               <text x="32" y="36" font-size="6.5" font-family="Newsreader" font-style="italic" fill="var(--ink-mute)" letter-spacing="0.4">QUESTION 03 OF 06</text>
               <text x="228" y="36" font-size="6.5" font-family="Newsreader" font-style="italic" fill="var(--accent)" text-anchor="end" letter-spacing="0.4">RISK PROFILE</text>
               <line x1="32" y1="44" x2="228" y2="44" stroke="var(--line)" stroke-width="0.4"/>
-              <text x="32" y="62" font-size="10" font-family="Spectral" font-style="italic" fill="var(--ink)">If the portfolio fell</text>
-              <text x="32" y="76" font-size="10" font-family="Spectral" font-style="italic" fill="var(--ink)">25%, how would</text>
-              <text x="32" y="90" font-size="10" font-family="Spectral" font-style="italic" fill="var(--ink)">you respond?</text>
+              <text x="32" y="62" font-size="10" font-family="Bitter" font-style="italic" fill="var(--ink)">If the portfolio fell</text>
+              <text x="32" y="76" font-size="10" font-family="Bitter" font-style="italic" fill="var(--ink)">25%, how would</text>
+              <text x="32" y="90" font-size="10" font-family="Bitter" font-style="italic" fill="var(--ink)">you respond?</text>
               <rect x="32" y="102" width="68" height="14" fill="none" stroke="var(--line)" stroke-width="0.7"/>
               <text x="66" y="111" font-size="6.5" font-family="Newsreader" fill="var(--ink-mute)" text-anchor="middle">Sell some</text>
               <rect x="106" y="102" width="58" height="14" fill="color-mix(in srgb,var(--accent) 12%,transparent)" stroke="var(--accent)" stroke-width="1"/>
@@ -473,7 +473,7 @@
           <div class="step-mock">
             <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
               <rect width="260" height="160" fill="var(--bg)"/>
-              <text x="130" y="22" font-size="8" font-family="Spectral" font-style="italic" fill="var(--accent)" text-anchor="middle" letter-spacing="0.5">ANALYSING . . .</text>
+              <text x="130" y="22" font-size="8" font-family="Bitter" font-style="italic" fill="var(--accent)" text-anchor="middle" letter-spacing="0.5">ANALYSING . . .</text>
               <!-- 4 pipeline boxes -->
               <rect x="20" y="38" width="100" height="22" fill="none" stroke="var(--accent)" stroke-width="0.8"/>
               <text x="28" y="52" font-size="6.5" font-family="Newsreader" fill="var(--accent)">[</text>
@@ -514,12 +514,12 @@
           <div class="step-mock">
             <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
               <rect width="260" height="160" fill="var(--bg)"/>
-              <text x="20" y="22" font-size="7" font-family="Spectral" font-style="italic" fill="var(--ink-mute)" letter-spacing="0.4">DIAGNOSTIC REPORT</text>
+              <text x="20" y="22" font-size="7" font-family="Bitter" font-style="italic" fill="var(--ink-mute)" letter-spacing="0.4">DIAGNOSTIC REPORT</text>
               <text x="240" y="22" font-size="6" font-family="Newsreader" font-style="italic" fill="var(--accent)" text-anchor="end">Equity | MF</text>
               <line x1="20" y1="30" x2="240" y2="30" stroke="var(--line)" stroke-width="0.4"/>
               <!-- Score circle -->
               <circle cx="48" cy="64" r="22" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
-              <text x="48" y="68" font-size="18" font-family="Spectral" font-style="italic" fill="var(--accent)" text-anchor="middle">73</text>
+              <text x="48" y="68" font-size="18" font-family="Bitter" font-style="italic" fill="var(--accent)" text-anchor="middle">73</text>
               <text x="48" y="92" font-size="6" font-family="Newsreader" font-style="italic" fill="var(--ink-mute)" text-anchor="middle">/ 100</text>
               <!-- Findings -->
               <rect x="86" y="44" width="148" height="14" fill="none" stroke="var(--line)" stroke-width="0.5"/>
@@ -532,7 +532,7 @@
               <rect x="86" y="80" width="3" height="14" fill="var(--good)"/>
               <text x="94" y="90" font-size="6.5" font-family="Newsreader" font-style="italic" fill="var(--ink)">Quality &mdash; top quartile</text>
               <!-- Suggested adjustments -->
-              <text x="20" y="116" font-size="7" font-family="Spectral" font-style="italic" fill="var(--accent)">Suggested adjustments</text>
+              <text x="20" y="116" font-size="7" font-family="Bitter" font-style="italic" fill="var(--accent)">Suggested adjustments</text>
               <line x1="20" y1="120" x2="240" y2="120" stroke="var(--accent)" stroke-width="0.4"/>
               <text x="20" y="132" font-size="6" font-family="Newsreader" font-style="italic" fill="var(--ink-soft)">i. Trim financials by ~8 pp</text>
               <text x="20" y="142" font-size="6" font-family="Newsreader" font-style="italic" fill="var(--ink-soft)">ii. Add value sleeve 12&ndash;15%</text>

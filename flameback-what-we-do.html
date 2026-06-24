@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>flameback. — What we do</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#1A1714;--ink:#F2EDE3;--ink-soft:rgba(242,237,227,.66);--ink-mute:rgba(242,237,227,.44);--line:rgba(242,237,227,.16);--accent:#D2682F;--btn-bg:#D2682F;--btn-ink:#1A1714;--grain-blend:screen;--grain-op:.055}
   :root.light{--bg:#F6F1E8;--ink:#1A1714;--ink-soft:rgba(26,23,20,.68);--ink-mute:rgba(26,23,20,.46);--line:rgba(26,23,20,.14);--accent:#A65232;--btn-bg:#1A1714;--btn-ink:#F6F1E8;--grain-blend:multiply;--grain-op:.035}
@@ -20,8 +20,8 @@
   .wm .p{color:var(--accent)}
   .lab{font-family:"Newsreader",serif;font-style:italic;font-size:13px;color:var(--ink-mute);letter-spacing:.03em;display:inline-flex;align-items:center;gap:11px}
   .lab .l{width:24px;height:1px;background:var(--accent)}
-  .lab .n{font-style:normal;color:var(--accent);font-family:"Spectral",serif;margin-right:4px}
-  h1,h2,h3,h4{font-family:"Spectral",serif;font-weight:500;letter-spacing:-.014em;color:var(--ink);line-height:1.04}
+  .lab .n{font-style:normal;color:var(--accent);font-family:"Bitter",serif;margin-right:4px}
+  h1,h2,h3,h4{font-family:"Bitter",serif;font-weight:500;letter-spacing:-.014em;color:var(--ink);line-height:1.04}
   h1 em,h2 em,h3 em,h4 em{color:var(--accent);font-style:italic;font-weight:500}
   p{line-height:1.62}
   .btn,.btn-out{display:inline-flex;align-items:center;gap:11px;font-family:"Newsreader",serif;font-size:14.5px;font-weight:500;padding:12px 22px;text-decoration:none;transition:gap .35s,opacity .3s,border-color .3s;cursor:pointer;border:none}
@@ -50,7 +50,7 @@
   .hero-meta .d{width:5px;height:5px;border-radius:50%;background:var(--accent)}
   h1.hero-h{font-size:clamp(40px,6vw,76px);line-height:.98;letter-spacing:-.02em;margin-bottom:24px;max-width:22ch}
   .hero-sub{font-size:clamp(16px,1.5vw,18px);line-height:1.6;color:var(--ink-soft);max-width:62ch;font-style:italic}
-  .hero-wmark{position:absolute;right:-20px;bottom:30px;font-family:"Spectral",serif;font-style:italic;font-size:clamp(140px,22vw,260px);color:var(--ink);opacity:.018;line-height:.8;pointer-events:none;letter-spacing:-.04em;white-space:nowrap}
+  .hero-wmark{position:absolute;right:-20px;bottom:30px;font-family:"Bitter",serif;font-style:italic;font-size:clamp(140px,22vw,260px);color:var(--ink);opacity:.018;line-height:.8;pointer-events:none;letter-spacing:-.04em;white-space:nowrap}
 
   .sec{padding:clamp(80px,9vh,130px) 0;border-bottom:1px solid var(--line)}
   .sec.alt{background:color-mix(in srgb,var(--ink) 2.2%,transparent)}
@@ -64,13 +64,13 @@
   .arc-beat{display:grid;grid-template-columns:100px 1fr;gap:clamp(20px,3vw,40px);padding:clamp(36px,4vw,52px) 0;border-top:1px solid var(--line);align-items:flex-start}
   .arc-beat:first-child{border-top:1px dashed var(--line)}
   @media(max-width:760px){.arc-beat{grid-template-columns:1fr;gap:12px}}
-  .arc-n{font-family:"Spectral",serif;font-style:italic;color:var(--accent);font-size:clamp(32px,4vw,46px);line-height:1;letter-spacing:-.01em}
+  .arc-n{font-family:"Bitter",serif;font-style:italic;color:var(--accent);font-size:clamp(32px,4vw,46px);line-height:1;letter-spacing:-.01em}
   .arc-body h3{font-size:clamp(26px,3vw,34px);line-height:1.08;margin-bottom:14px;max-width:22ch}
   .arc-body h3 em{color:var(--accent);font-style:italic}
   .arc-body p{font-size:15.5px;line-height:1.7;color:var(--ink);margin-bottom:14px;max-width:62ch}
   .arc-body p em{color:var(--accent);font-style:italic;font-weight:500}
   .arc-body p strong{font-weight:500;color:var(--ink);font-style:italic}
-  .arc-quote{font-family:"Spectral",serif;font-style:italic;font-size:clamp(18px,2vw,22px);line-height:1.4;color:var(--ink);border-left:2px solid var(--accent);padding-left:18px;margin:18px 0 4px;max-width:54ch}
+  .arc-quote{font-family:"Bitter",serif;font-style:italic;font-size:clamp(18px,2vw,22px);line-height:1.4;color:var(--ink);border-left:2px solid var(--accent);padding-left:18px;margin:18px 0 4px;max-width:54ch}
   .arc-quote em{color:var(--accent)}
   .arc-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
   .arc-tag{padding:5px 11px;border:1px solid var(--line);font-family:"Newsreader",serif;font-style:italic;font-size:11.5px;color:var(--ink-soft)}
@@ -88,7 +88,7 @@
   .adv-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   @media(max-width:760px){.adv-grid{grid-template-columns:1fr}}
   .adv-card{padding:22px 24px;border:1px solid var(--line);background:var(--bg);display:flex;flex-direction:column;gap:8px}
-  .adv-card .cn{font-family:"Spectral",serif;font-style:italic;color:var(--accent);font-size:14px}
+  .adv-card .cn{font-family:"Bitter",serif;font-style:italic;color:var(--accent);font-size:14px}
   .adv-card h4{font-size:18px;line-height:1.2;margin-bottom:4px}
   .adv-card h4 em{color:var(--accent);font-style:italic}
   .adv-card p{font-size:13.5px;color:var(--ink-soft);line-height:1.6;font-style:italic}

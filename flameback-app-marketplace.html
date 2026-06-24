@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>flameback. — Strategy marketplace</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 <style>
   :root{--bg:#1A1714;--ink:#F2EDE3;--ink-soft:rgba(242,237,227,.66);--ink-mute:rgba(242,237,227,.44);--line:rgba(242,237,227,.16);--accent:#D2682F;--btn-bg:#D2682F;--btn-ink:#1A1714;--grain-blend:screen;--grain-op:.055;--card:rgba(242,237,227,.03);--pos:#5BBF6A;--neg:#D9614C}
   :root.light{--bg:#F6F1E8;--ink:#1A1714;--ink-soft:rgba(26,23,20,.68);--ink-mute:rgba(26,23,20,.46);--line:rgba(26,23,20,.14);--accent:#A65232;--btn-bg:#1A1714;--btn-ink:#F6F1E8;--grain-blend:multiply;--grain-op:.035;--card:rgba(26,23,20,.025);--pos:#2E7D32;--neg:#A93226}
@@ -13,7 +13,7 @@
   html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
   body{background:var(--bg);color:var(--ink);font-family:"Newsreader",serif;transition:background .5s,color .5s;line-height:1.55;font-variant-numeric:tabular-nums;min-height:100vh;display:flex;flex-direction:column}
   body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;mix-blend-mode:var(--grain-blend);opacity:var(--grain-op);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  h1,h2,h3,h4{font-family:"Spectral",serif;font-weight:500;letter-spacing:-.014em;line-height:1.04}
+  h1,h2,h3,h4{font-family:"Bitter",serif;font-weight:500;letter-spacing:-.014em;line-height:1.04}
   h1 em,h2 em,h3 em{color:var(--accent);font-style:italic;font-weight:500}
   .mono{font-family:"Newsreader",monospace;letter-spacing:.07em;text-transform:uppercase}
   .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(22px,5vw,44px)}
@@ -91,7 +91,7 @@
   .metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:12px}
   .metrics .m{background:var(--bg);padding:9px 8px;display:flex;flex-direction:column;gap:3px}
   .metrics .mk{font-family:"Newsreader",monospace;font-size:8px;color:var(--ink-mute);letter-spacing:.04em;text-transform:uppercase}
-  .metrics .mv{font-size:14px;color:var(--ink);font-family:"Spectral",serif}
+  .metrics .mv{font-size:14px;color:var(--ink);font-family:"Bitter",serif}
   .metrics .mv.pos{color:var(--pos)}.metrics .mv.neg{color:var(--neg)}
   .philo{font-size:12.5px;font-style:italic;color:var(--ink-soft);line-height:1.55;margin-bottom:14px}
 
@@ -111,7 +111,7 @@
   .riskgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
   .riskgrid .rc{background:var(--bg);padding:8px;display:flex;flex-direction:column;gap:2px}
   .riskgrid .rk{font-family:"Newsreader",monospace;font-size:7.5px;color:var(--ink-mute);letter-spacing:.04em;text-transform:uppercase}
-  .riskgrid .rv{font-size:13px;font-family:"Spectral",serif;color:var(--ink)}
+  .riskgrid .rv{font-size:13px;font-family:"Bitter",serif;color:var(--ink)}
 
   .selbtn{width:100%;background:var(--btn-bg);color:var(--btn-ink);font-family:"Newsreader",serif;font-size:14px;font-weight:500;padding:13px;border:none;cursor:pointer;transition:opacity .3s}
   .selbtn:hover{opacity:.93}
@@ -123,8 +123,8 @@
   .invest .inh{font-family:"Newsreader",monospace;font-size:10px;color:var(--ink-mute);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
   .amt{display:flex;align-items:baseline;border:1px solid var(--line);background:var(--card);padding:14px 16px;margin-bottom:8px}
   .amt:focus-within{border-color:var(--accent)}
-  .amt .cur{font-family:"Spectral",serif;font-size:28px;color:var(--ink-soft);margin-right:8px}
-  .amt input{flex:1;background:none;border:none;outline:none;color:var(--ink);font-family:"Spectral",serif;font-size:30px;font-weight:500;width:100%}
+  .amt .cur{font-family:"Bitter",serif;font-size:28px;color:var(--ink-soft);margin-right:8px}
+  .amt input{flex:1;background:none;border:none;outline:none;color:var(--ink);font-family:"Bitter",serif;font-size:30px;font-weight:500;width:100%}
   .amt input::placeholder{color:var(--ink-mute)}
   .minnote{font-size:11.5px;font-style:italic;color:var(--ink-soft);margin-bottom:16px}
   .minnote.err{color:var(--neg)}
@@ -154,7 +154,7 @@
   .cmp .col.rec{border-color:var(--accent)}
   .cmp .clab{font-family:"Newsreader",monospace;font-size:8px;color:var(--ink-mute);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
   .cmp .col.rec .clab{color:var(--accent)}
-  .cmp .cnm{font-family:"Spectral",serif;font-size:16px;color:var(--ink);line-height:1.1;margin-bottom:8px}
+  .cmp .cnm{font-family:"Bitter",serif;font-size:16px;color:var(--ink);line-height:1.1;margin-bottom:8px}
   .cmp .crow{font-size:11px;color:var(--ink-soft);display:flex;justify-content:space-between;padding:3px 0}
   .cmp .crow span:last-child{font-family:"Newsreader",monospace;color:var(--ink)}
   .wexpl{font-size:13px;line-height:1.6;color:var(--ink-soft);margin-bottom:16px}

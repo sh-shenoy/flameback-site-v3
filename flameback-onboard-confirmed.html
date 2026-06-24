@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>flameback. — Conversation confirmed</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#1A1714; --ink:#F2EDE3; --ink-soft:rgba(242,237,227,.64); --ink-mute:rgba(242,237,227,.42);
@@ -25,7 +25,7 @@
   .wrap{max-width:760px;margin:0 auto;padding:0 clamp(22px,5vw,44px)}
   .wm{font-family:"Newsreader",serif;font-weight:600;font-size:18px;color:var(--ink);text-decoration:none}
   .wm .p{color:var(--accent)}
-  h1,h2,h3,h4{font-family:"Spectral",serif;font-weight:500;letter-spacing:-.012em;color:var(--ink)}
+  h1,h2,h3,h4{font-family:"Bitter",serif;font-weight:500;letter-spacing:-.012em;color:var(--ink)}
 
   nav{padding:18px 0;border-bottom:1px solid var(--line)}
   .navin{display:flex;align-items:center;justify-content:space-between;max-width:1080px;margin:0 auto;padding:0 clamp(22px,5vw,44px)}
@@ -38,7 +38,7 @@
 
   /* Confirmation mark */
   .check{display:flex;align-items:center;gap:14px;margin-bottom:24px}
-  .check-mark{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:"Spectral",serif;font-style:italic;font-size:22px;flex-shrink:0}
+  .check-mark{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:"Bitter",serif;font-style:italic;font-size:22px;flex-shrink:0}
   .check-lab{font-family:"Newsreader",serif;font-style:italic;font-size:13px;color:var(--ink-mute);letter-spacing:.05em;text-transform:uppercase}
 
   h1{font-size:clamp(36px,5.4vw,58px);line-height:1;letter-spacing:-.018em;margin-bottom:18px;max-width:18ch}
@@ -48,10 +48,10 @@
   /* Meeting card */
   .meet{border:1px solid var(--accent);background:color-mix(in srgb,var(--accent) 4%,transparent);padding:clamp(22px,3vw,30px);margin-bottom:32px}
   .meet-l{font-style:italic;font-size:11px;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
-  .meet-time{font-family:"Spectral",serif;font-style:italic;font-size:clamp(24px,3.4vw,32px);line-height:1.1;color:var(--ink);margin-bottom:6px}
+  .meet-time{font-family:"Bitter",serif;font-style:italic;font-size:clamp(24px,3.4vw,32px);line-height:1.1;color:var(--ink);margin-bottom:6px}
   .meet-place{font-size:14px;color:var(--ink-soft);font-style:italic;margin-bottom:18px}
   .meet-rm{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid color-mix(in srgb,var(--accent) 25%,transparent)}
-  .rm-av{width:38px;height:38px;border-radius:50%;background:color-mix(in srgb,var(--accent) 16%,transparent);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:"Spectral",serif;font-style:italic;font-size:15px;color:var(--accent);flex-shrink:0}
+  .rm-av{width:38px;height:38px;border-radius:50%;background:color-mix(in srgb,var(--accent) 16%,transparent);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:"Bitter",serif;font-style:italic;font-size:15px;color:var(--accent);flex-shrink:0}
   .meet-rm .meta{font-size:13.5px}
   .meet-rm .meta .name{color:var(--ink)}
   .meet-rm .meta .role{color:var(--ink-mute);font-style:italic;font-size:11.5px;margin-top:2px}
@@ -68,7 +68,7 @@
   .expect ol{list-style:none;counter-reset:e}
   .expect li{counter-increment:e;display:flex;gap:16px;padding:14px 0;border-top:1px solid var(--line);font-size:14.5px;line-height:1.6;color:var(--ink-soft)}
   .expect li:first-child{border-top:none}
-  .expect li::before{content:counter(e,lower-roman) ".";font-family:"Spectral",serif;font-style:italic;color:var(--accent);font-size:16px;flex-shrink:0;width:24px;line-height:1.5}
+  .expect li::before{content:counter(e,lower-roman) ".";font-family:"Bitter",serif;font-style:italic;color:var(--accent);font-size:16px;flex-shrink:0;width:24px;line-height:1.5}
   .expect li strong{font-weight:500;color:var(--ink);font-style:normal}
 
   /* While you wait */

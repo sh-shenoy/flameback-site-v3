@@ -6,7 +6,7 @@
 <title>flameback. — QLab Notes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#1A1714; --ink:#F2EDE3; --ink-soft:rgba(242,237,227,.64); --ink-mute:rgba(242,237,227,.42);
@@ -28,7 +28,7 @@
   .wm{font-family:"Newsreader",serif;font-weight:600;font-size:18px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
   .wm .p{color:var(--accent)}
   .lab{font-family:"Newsreader",serif;font-style:italic;font-size:14px;color:var(--ink-mute)}
-  h1,h2,h3,h4{font-family:"Spectral",serif;font-weight:500;letter-spacing:-.012em;color:var(--ink)}
+  h1,h2,h3,h4{font-family:"Bitter",serif;font-weight:500;letter-spacing:-.012em;color:var(--ink)}
 
   nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .4s}
   nav.scrolled{border-color:var(--line)}
@@ -53,7 +53,7 @@
   .hero{padding:clamp(44px,6vh,72px) 0 clamp(20px,3vh,32px)}
   .dateline{display:flex;align-items:center;gap:13px;margin-bottom:22px}
   .dateline .l{flex:0 0 26px;height:1px;background:var(--accent)}
-  .hero h1{font-family:"Spectral",serif;font-weight:500;font-size:clamp(34px,5vw,56px);line-height:0.98;letter-spacing:-.018em;margin-bottom:20px}
+  .hero h1{font-family:"Bitter",serif;font-weight:500;font-size:clamp(34px,5vw,56px);line-height:0.98;letter-spacing:-.018em;margin-bottom:20px}
   .hero-sub{font-size:16.5px;line-height:1.6;color:var(--ink);max-width:64ch}
 
   /* Status meta strip */
@@ -62,7 +62,7 @@
   @media(max-width:680px){.stats-row{grid-template-columns:repeat(2,1fr)}}
   .stat{background:var(--bg);padding:14px 18px}
   .stat-l{display:block;font-family:"Newsreader",serif;font-style:italic;font-size:11px;color:var(--ink-mute);letter-spacing:.05em;text-transform:uppercase;line-height:1.2;margin-bottom:6px}
-  .stat-v{font-family:"Spectral",serif;font-style:italic;font-size:24px;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+  .stat-v{font-family:"Bitter",serif;font-style:italic;font-size:24px;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
   .stat-v.muted{color:var(--ink)}
 
   /* Filter strip */
@@ -82,7 +82,7 @@
   @media(max-width:760px){.note{grid-template-columns:1fr;gap:14px}}
 
   .note-side{display:flex;flex-direction:column;gap:10px;font-size:12px}
-  .n-id{font-family:"Spectral",serif;font-style:italic;color:var(--accent);font-size:24px;line-height:1;letter-spacing:.02em}
+  .n-id{font-family:"Bitter",serif;font-style:italic;color:var(--accent);font-size:24px;line-height:1;letter-spacing:.02em}
   .n-date{font-family:"Newsreader",serif;font-style:italic;color:var(--ink-mute);font-size:12px}
   .n-status{display:inline-flex;align-items:center;gap:7px;padding:3px 9px;border:1px solid var(--line);font-family:"Newsreader",serif;font-style:italic;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;width:fit-content}
   .n-status .dot{width:6px;height:6px;border-radius:50%}
@@ -95,7 +95,7 @@
 
   .note-body{min-width:0}
   .note-cat{font-family:"Newsreader",serif;font-style:italic;font-size:11px;color:var(--ink-mute);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
-  .note-title{font-family:"Spectral",serif;font-size:26px;font-weight:500;line-height:1.1;color:var(--ink);margin-bottom:10px;letter-spacing:-.005em}
+  .note-title{font-family:"Bitter",serif;font-size:26px;font-weight:500;line-height:1.1;color:var(--ink);margin-bottom:10px;letter-spacing:-.005em}
   .note-abs{font-size:14.5px;line-height:1.6;color:var(--ink);max-width:60ch;margin-bottom:14px}
   .note-meta{display:flex;flex-wrap:wrap;gap:18px;font-size:12.5px;padding-top:12px;border-top:1px solid var(--line)}
   .nm-item{display:flex;align-items:baseline;gap:7px}
